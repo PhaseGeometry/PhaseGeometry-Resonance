@@ -1,0 +1,315 @@
+\documentclass[11pt,a4paper]{article}
+\pdfoutput=1
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{\bm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\title{PhaseGeometry Resonance Programme:\\[4pt]
+Operational Phase Framework for Superconducting and Quantum Devices}
+
+\author{Aleksey Turchanov}
+
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Zenodo DOI: 10.5281/zenodo.17807163
+\end{center}
+
+\vspace{1em}
+
+
+\begin{abstract}
+The PhaseGeometry Resonance programme provides an operational phase-based
+language for superconducting and quantum devices. Instead of treating each
+device (Josephson junctions, SNS weak links, SQUIDs, tunnelling diodes,
+mesoscopic interferometers) with a separate collection of models, the
+Resonance framework describes them as phase rotators, phase meters and
+resonant field cells characterised by a small set of effective parameters.
+This note summarises the rôle of the Resonance layer within the broader
+PhaseGeometry architecture and explains five concrete advantages of this
+language: (i) unification and compression of device descriptions, (ii)
+a clear figure of merit based on the phase--flux coupling coefficient
+$\alpha(d,\omega)$, (iii) a clean interface to the Z$_2$ and Phase-Fibre
+(5D) branches, (iv) direct experimental testability via thick SNS
+phase-rotator devices, and (v) a conceptual shift from ``SQUID-only''
+phase control to strongly localised phase rotators.
+\end{abstract}
+
+\section{Resonance within the PhaseGeometry architecture}
+
+The PhaseGeometry programme consists of three main branches:
+\begin{itemize}
+  \item the \emph{Resonance} series, which introduces an operational
+  phase-based description of superconducting and quantum devices in
+  standard $3+1$-dimensional physics (Maxwell, London, Josephson,
+  proximity effect);
+  \item the \emph{Phase-Fibre} (5D) series, in which phase is promoted to
+  a genuine geometric coordinate $\phi$ on a compact fibre, leading to
+  a five-dimensional description of gravity, electromagnetism and phase
+  clocks;
+  \item the \emph{Z$_2$} series, where a binary phase medium provides a
+  unified dark sector and quantum-foundational substrate.
+\end{itemize}
+
+In this architecture the Resonance layer plays a specific rôle:
+\begin{itemize}
+  \item it is formulated entirely in standard condensed-matter and
+  electromagnetism language (no explicit Z$_2$ or 5D assumptions);
+  \item it provides a compact operational dictionary for devices:
+  superconductors are phase media, weak links are phase rotators,
+  local standing-wave configurations of fields and currents are resonant
+  field cells, and the phase--flux coupling is encoded in a single
+  coefficient $\alpha(d,\omega)$;
+  \item it is explicitly designed to be embeddable into both the Z$_2$
+  and Phase-Fibre (5D) branches: once devices are written in this
+  common phase language, they can be reinterpreted as effective
+  manifestations of either a binary phase medium or a 5D phase fibre.
+\end{itemize}
+
+The aim of this note is to clarify \emph{why} such an intermediate
+Resonance layer is useful and what concrete advantages it offers over
+a collection of device-specific models.
+
+\section{Advantage I: Unification and compression of device descriptions}
+\label{sec:advantage_unification}
+
+In conventional device physics each superconducting or mesoscopic element
+typically comes with its own model:
+\begin{itemize}
+  \item Ginzburg--Landau and London theory for bulk superconductors;
+  \item Usadel or Eilenberger equations for diffusive weak links;
+  \item RCSJ-type models for Josephson junction dynamics;
+  \item device-specific treatments for SQUIDs, resonators, hybrid
+  structures, and so on.
+\end{itemize}
+While each model is well established, the conceptual landscape quickly
+becomes fragmented. It is not obvious, for example, how to place a
+thick SNS weak link, a Dayem bridge, an Esaki diode and an Aharonov--Bohm
+ring into a single schematic framework without diving into their
+microscopic details.
+
+The Resonance framework instead operates with a deliberately small
+set of phase-based objects:
+\begin{itemize}
+  \item a \emph{phase field} $\phi(\mathbf{r},t)$ representing the
+  superconducting order parameter phase or an effective phase of a
+  transport mode;
+  \item a \emph{phase rotator}: a local region where the phase changes
+  by some amount $\Delta\phi$ in response to an applied drive
+  (voltage, current, magnetic flux, RF field);
+  \item a \emph{resonant field cell}: a local standing-wave configuration
+  of currents and fields associated with the phase rotator;
+  \item a \emph{phase--flux coupling coefficient} $\alpha(d,\omega)$,
+  which quantifies the efficiency with which external fields or flux
+  modulate the phase across the rotator.
+\end{itemize}
+
+In this language:
+\begin{itemize}
+  \item a standard Josephson junction is a simple phase rotator with
+  moderately weak coupling $\alpha$;
+  \item a thick SNS weak link with an on-chip microcoil is a potentially
+  \emph{strong} phase rotator with $|\alpha| \sim 0.3$--$0.6$;
+  \item a SQUID loop with two junctions is a phase interferometer
+  (phase meter) built from two rotators in a global flux quantisation
+  condition;
+  \item more exotic devices (Esaki diodes, resonant-tunnelling diodes,
+  Aharonov--Bohm rings, quantum point contacts) can be added to the
+  ``phase-device zoo'' as normal-state phase rotators or phase meters.
+\end{itemize}
+
+The key point is that many devices can be described \emph{schematically}
+with the same few building blocks, and the microscopic diversity is
+compressed into the calibration of $\alpha(d,\omega)$ and related
+effective parameters.
+
+\section{Advantage II: A clear figure of merit via $\alpha(d,\omega)$}
+\label{sec:advantage_alpha}
+
+In standard superconducting device discussions one often hears that a
+given weak link is ``small'', ``moderately sensitive'' or ``strongly
+coupled'' without a universal quantitative comparator. The Resonance
+framework introduces a clean figure of merit:
+\begin{equation}
+  \alpha(d,\omega) \;=\;
+  \frac{\Phi_0}{2\pi}\,
+  \frac{\partial \phi_J}{\partial \Phi_{\text{ext}}}
+  \bigg|_{d,\omega} \,,
+\end{equation}
+where $\phi_J$ is the phase difference across the weak link,
+$\Phi_{\text{ext}}$ is an external magnetic flux (or more generally a
+local field integrated over a suitable area), $\Phi_0$ is the flux
+quantum, $d$ is a characteristic thickness or length of the active
+region, and $\omega$ labels the drive frequency.
+
+This dimensionless coefficient encapsulates how efficiently an external
+field or flux drives the phase across the device:
+\begin{itemize}
+  \item $|\alpha| \ll 10^{-2}$ corresponds to a \emph{weak} phase
+  rotator: the phase is only slightly modulated, and the device acts
+  more like a passive element;
+  \item $|\alpha| \sim 10^{-1}$--$1$ corresponds to a \emph{strong}
+  phase rotator: local fields can produce large phase excursions and
+  strong modulation of the supercurrent.
+\end{itemize}
+
+In the thick SNS with microcoil proposal developed in the Resonance
+series, one finds that realistic geometries can achieve
+$|\alpha| \sim 0.3$--$0.6$, comparable in phase efficiency to a
+well-designed SQUID loop but in a compact, local geometry. The same
+$\alpha(d,\omega)$ becomes a unifying figure of merit across different
+devices, allowing direct comparison of how ``phase-active'' they are,
+independent of microscopic details.
+
+\section{Advantage III: Interface to Z$_2$ and Phase-Fibre (5D) branches}
+\label{sec:advantage_interface}
+
+The Z$_2$ and Phase-Fibre (5D) branches of PhaseGeometry are
+interpretational and structural extensions:
+\begin{itemize}
+  \item the Z$_2$ programme treats the world as a binary phase medium
+  with cosmological and quantum-foundational consequences;
+  \item the Phase-Fibre programme promotes phase to a fifth coordinate
+  $\phi$ on a compact fibre, giving a Kaluza--Klein-like unified
+  picture of gravity, electromagnetism and phase clocks.
+\end{itemize}
+
+Both branches need a way to connect to \emph{real laboratory devices}.
+The Resonance framework provides this bridge:
+\begin{itemize}
+  \item it packages devices into phase rotators, phase meters and
+  resonant cells with well-defined phase fields and couplings
+  $\alpha(d,\omega)$;
+  \item once this is done, the same devices can be reinterpreted as
+  probes of a binary Z$_2$ phase medium or as trajectories in a
+  5D phase fibre;
+  \item derivations of Josephson-like relations, gravitational
+  redshift of phase clocks, and Sagnac-type phase shifts become
+  statements about how the Z$_2$ medium or 5D geometry affects
+  the phase rate and phase coupling in the operational layer.
+\end{itemize}
+
+In this sense the Resonance series is the \emph{shared device layer}
+for both deeper branches: it keeps the device physics grounded in
+standard SC/EM theory while making it immediately compatible with
+the higher-level PhaseGeometry structures.
+
+\section{Advantage IV: Direct experimental testability}
+\label{sec:advantage_experimental}
+
+A crucial strength of the Resonance framework is that it is not only
+a conceptual language but also a basis for \emph{concrete experimental
+proposals}. In particular, the thick SNS phase-rotator scheme with
+a local microcoil provides:
+\begin{itemize}
+  \item a fully standard setup in terms of materials and fabrication:
+  a superconducting strip, a $\sim 500$\,nm long diffusive SNS weak
+  link, and a micron-scale on-chip spiral coil;
+  \item a clear experimental protocol: drive the coil at microwave
+  frequencies and compare the resulting Shapiro-step pattern (phase
+  modulation induced by the coil) to that produced by a conventional
+  RF drive applied to the junction;
+  \item a direct extraction of $\alpha(d,\omega)$ from the relative
+  height of magnetically driven and RF-driven Shapiro steps.
+\end{itemize}
+
+If the measured $\alpha(d,\omega)$ reaches the predicted
+$|\alpha| \sim 0.3$--$0.6$ regime, this would confirm that strongly
+localised phase rotators are experimentally feasible. If not, the
+same framework provides a clear target for refining designs or revising
+assumptions.
+
+This experimental anchoring makes the Resonance layer \emph{falsifiable}
+and practically relevant: it is not merely an abstract rephrasing, but
+a way to design and test new classes of phase-sensitive devices.
+
+\section{Advantage V: Conceptual shift beyond SQUID-only phase control}
+\label{sec:advantage_conceptual}
+
+In the traditional picture, strong magnetic control of superconducting
+phase is typically associated with macroscopic loops:
+\begin{itemize}
+  \item SQUIDs, where the phase difference is tied to the total flux
+  through the loop;
+  \item extended superconducting rings in Sagnac-type configurations.
+\end{itemize}
+
+The Resonance framework reframes this intuition. By focusing on local
+phase rotators and resonant field cells, it highlights that:
+\begin{itemize}
+  \item strong phase control does not require a large loop; it can be
+  achieved in a compact, locally driven region (e.g.\ a thick SNS with
+  microcoil), provided the geometry and frequency place the system in
+  a high-$Q$, large-$\alpha$ regime;
+  \item loops and rings (SQUIDs, superconducting interferometers) then
+  appear as \emph{global constraints} on networks of local rotators,
+  rather than the only way to access phase;
+  \item the line between ``interferometric'' devices (SQUIDs, AB rings)
+  and ``local'' devices (weak links, rotators) becomes more fluid:
+  both are built from the same phase elements, arranged differently.
+\end{itemize}
+
+This conceptual shift is modest but important. It opens the door to:
+\begin{itemize}
+  \item designing new families of compact, strongly phase-sensitive
+  devices that do not rely on large loops;
+  \item thinking of circuits and lattices of phase rotators as
+  programmable phase media, which is particularly relevant for both
+  the Z$_2$ and Phase-Fibre branches;
+  \item using the same language to compare and combine devices from
+  superconducting, normal-state and mesoscopic domains within the
+  phase-device zoo.
+\end{itemize}
+
+\section{Outlook}
+
+The current Resonance framework already:
+\begin{itemize}
+  \item unifies superconducting weak links, SQUIDs and related devices
+  as phase rotators and phase meters;
+  \item provides a clear figure of merit $\alpha(d,\omega)$ for phase
+  coupling strength;
+  \item supports concrete experimental proposals, particularly thick
+  SNS phase-rotator devices;
+  \item interfaces cleanly with both the Z$_2$ and Phase-Fibre (5D)
+  branches of PhaseGeometry.
+\end{itemize}
+
+Future work can extend this operational layer in several directions:
+\begin{itemize}
+  \item incorporating normal-state devices (Esaki, RTD, Gunn, IMPATT)
+  and mesoscopic interferometers (Aharonov--Bohm rings, QPCs, SETs)
+  into a fully developed phase-device zoo, calibrated via
+  normal-state analogues of $\alpha(d,\omega)$;
+  \item constructing networks of phase rotators and meters as
+  programmable phase media, providing a circuit-level laboratory
+  analogue of Z$_2$ and 5D phase structures;
+  \item integrating more detailed microscopic calculations (Usadel,
+  NEGF, microscopic Josephson theory) into the calibration of
+  $\alpha(d,\omega)$ and related effective parameters, reinforcing the
+  link between the Resonance layer and standard condensed-matter
+  theory.
+\end{itemize}
+
+In summary, the Resonance programme is not a replacement for existing
+microscopic models, but a compact operational layer that makes the
+phase nature of devices explicit, quantifiable and transferable across
+domains. It is this layer that allows PhaseGeometry to speak
+simultaneously to experimental device physics and to its own deeper
+Z$_2$ and Phase-Fibre structures.
+
+\end{document}

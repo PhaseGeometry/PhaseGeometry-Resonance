@@ -1,0 +1,428 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{titling} % добавлено для управления позицией заголовка
+
+\setlength{\droptitle}{-1cm} % поднять блок заголовка примерно на 1 см вверх
+
+\title{PhaseGeometry-Resonance --- Part I\\[4pt]
+Resonant Field Symmetry in Superconductors:\\
+A Standing-Wave Picture of Meissner Screening and Josephson Barriers}
+
+\author{Aleksey Turchanov}
+\date{November 2025\\[0.3em]
+\scriptsize Licensed under CC BY 4.0. Zenodo DOI: 10.5281/zenodo.17807163}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We propose a phase--geometric view of superconductivity that we call
+\emph{resonant field symmetry}. Instead of treating the Meissner effect,
+surface screening currents and Josephson weak links as separate ingredients,
+we model a superconductor as a phase--coherent medium in which electric and
+magnetic field components form standing structures. In this picture,
+Meissner screening is understood not as the disappearance of magnetic field
+inside the sample, but as a rearrangement of a standing wave and surface
+currents such that the \emph{macroscopic} magnetic flux through the
+superconductor vanishes, while field energy remains localized within a thin
+surface layer of thickness $\lambda_L$.
+
+Within this language a Josephson barrier or a thick SNS bridge is naturally
+described as a \emph{phase rotator}: a local region in which the phase flow
+is turned by a finite angle, and part of the energy can be stored in a
+localized magnetic configuration around the weak link. The barrier thickness
+then controls the balance between purely tunneling transport and local
+magnetic ``tension'' in this region.
+
+The formalism is meant as a compact effective language on top of the
+standard Ginzburg--Landau, London--Maxwell and Josephson theory, not as an
+alternative microscopic model. In the companion paper
+\emph{Resonant Field Framework and Classical Basis}
+(Phase Geometry Series --- Part I-B) the same objects are introduced in a
+more technical way, and the phase--flux sensitivity of a weak link is
+described by a normalized coefficient
+\(
+\alpha(d,\omega) = (\Phi_0/2\pi)\, \partial\varphi_J/\partial\Phi_{\text{ext}}
+\),
+computed within the classical GL/Usadel, London--Maxwell and RCSJ framework
+for a concrete geometry: a thick SNS weak link driven by a local microcoil.
+Here we focus instead on an intuitive standing-wave picture of Meissner
+screening, Josephson barriers and thick weak links as phase rotators with
+localized resonant field cells.
+
+\medskip
+\noindent\textbf{Standard.}
+All ingredients remain within conventional Ginzburg--Landau theory,
+London--Maxwell electrodynamics and Josephson phenomenology; no microscopic
+BCS assumptions are modified, and all observable consequences are consistent
+with standard superconductivity.
+
+\noindent\textbf{New in this note.}
+A phenomenological standing--wave picture of Meissner screening, the notion
+of phase rotators and localized resonant field cells, and a qualitative map
+between barrier thickness, phase--flux sensitivity $\alpha(d,\omega)$ and
+possible microcoil-based phase-control experiments.
+\end{abstract}
+\pagebreak
+\tableofcontents
+
+\section{Introduction}
+
+The conventional description of superconductors is usually built as a set of
+separate blocks: London equations for screening currents, Josephson
+phenomenology for weak links, models of tunneling barriers, and SQUID
+circuit theory. In this standard approach, Meissner screening, supercurrents
+and Josephson phase dynamics appear as different effects that must be
+manually ``glued together'' when one considers a specific device or
+geometry.
+
+In this work we propose a phenomenological, more geometric reinterpretation,
+which we call \emph{resonant field symmetry}. Instead of treating the
+magnetic field, currents and barriers separately, we view a superconductor
+as a phase--coherent medium in which the electromagnetic field can form a
+standing structure. Meissner ``expulsion'' is then understood not as the
+absence of field, but as a rearrangement of the standing wave and screening
+currents such that the \emph{net} flux through the sample is zero.
+
+On this level it is more convenient to speak not about ``magnetic field
+inside'' and ``current at the surface'', but about a phase field
+$\phi(\mathbf{r})$ that encodes the standing structure. A weak link (a
+Josephson tunnel junction, an SNS bridge, a nanobridge) is then naturally
+described as a \emph{phase rotator}: a local region in which the phase flow
+is turned by a finite angle $\Delta\phi$, and part of the energy can be
+stored in a localized magnetic configuration around the weak link. The
+thickness of the barrier controls the balance between purely tunneling
+transport and local magnetic ``tension'' in this region.
+
+This language is practically useful because it compresses a complicated
+configuration of fields and currents into a small number of geometric
+objects: a phase field $\phi(\mathbf{r})$, rotators (places where the phase
+is turned), and localized resonant regions --- \emph{Resonant Field Cells}
+--- where the field and phase form a standing pattern. For device design
+this is often enough: one can mentally assemble a ``phase circuit'' from
+rotators and standing segments and immediately see where the system stores
+energy and where it efficiently transmits phase.
+
+At the same time, the present language is not meant to replace microscopic
+BCS theory or the standard Ginzburg--Landau framework. It is intended as a
+compact \emph{upper layer} above the familiar theory. In the companion paper
+\emph{Resonant Field Framework and Classical Basis}
+(Phase Geometry Series --- Part I-B) the same objects are introduced more
+formally: a phase rotator is identified with a weak link whose normalized
+phase--flux response
+\[
+\alpha(d,\omega)
+= \frac{\Phi_0}{2\pi}\,
+  \frac{\partial\varphi_J}{\partial\Phi_{\text{ext}}}\Big|_\omega
+\]
+is expressed in terms of GL/Usadel, London--Maxwell and RCSJ parameters.
+There we show, for a particular geometry of a thick SNS weak link with a
+local microcoil, how one can estimate $\alpha(d,\omega)$ and identify a
+strong--rotator regime with $|\alpha|\sim 0.3$--$0.6$.
+
+The present text should therefore be read as a \emph{manifest} and an
+intuitive introduction to a phase--geometric view of superconductivity. We
+deliberately use simplified schematics and qualitative reasoning: the goal
+is to understand how Meissner screening, a Josephson barrier and a thick
+bridge look if one thinks in terms of standing phase structures and local
+rotators. Readers who need detailed calculations of $\alpha(d,\omega)$,
+critical currents or Shapiro step heights can use the companion Part I-B as
+a ``working dictionary'', where the resonant field picture is tied to the
+standard classical theory.
+
+In what follows we proceed as follows. In Sec.~\ref{sec:standing-meissner}
+we discuss wave geometry and standing symmetry in a simple superconducting
+cylinder and reinterpret Meissner screening in terms of a standing $B$-field
+mode and surface currents. In Sec.~\ref{sec:rotator} we discuss the
+Josephson barrier as a phase rotator. In Sec.~\ref{sec:thick-cell} we
+consider thick weak links and the qualitative emergence of a localized
+resonant field cell around a bridge. In Sec.~\ref{sec:alpha-d} we sketch the
+expected qualitative dependence of the phase--flux coefficient $\alpha(d)$
+on barrier thickness and the transition to a strong--rotator regime. In
+Sec.~\ref{sec:experiments} we outline possible phase-control experiments
+with local microcoils. Finally, in Sec.~\ref{sec:outlook} we discuss how
+Manifest I, its Part I-B companion and subsequent Parts II and III of the
+Phase Geometry Series fit together into a broader phase--geometric framework
+that also covers phase clocks and weak gravitational fields.
+
+\section{Standing-wave symmetry and Meissner screening}
+\label{sec:standing-meissner}
+
+We begin with a simple textbook geometry: a long superconducting cylinder in
+an external magnetic field. In the conventional picture, the London
+equations imply that the field is expelled from the bulk, decaying on the
+length scale of the London penetration depth $\lambda_L$, while surface
+supercurrents $j_s$ flow in a thin layer near the boundary. The Meissner
+effect is then often phrased as ``the superconductor expels magnetic
+field''. 
+
+In the resonant field picture, we instead think of the cylinder as hosting a
+standing structure of the electromagnetic field. In the Meissner state the
+macroscopic flux through the cross-section vanishes, but the field energy is
+concentrated in a thin surface layer of thickness $\lambda_L$, where the
+magnetic field $B$ and the surface current $j_s$ form a resonant pattern.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\textwidth]{1-1.jpg}
+  \caption{Standing-wave symmetry in a superconducting cylinder.
+  Two counter-propagating components of the magnetic field $B$ form a
+  standing mode inside the sample, while the macroscopic flux is cancelled
+  by a surface supercurrent $j_s$ flowing in a layer of thickness
+  $\lambda_L$. The picture is schematic: it is meant to emphasize the
+  standing-wave interpretation rather than provide an exact field profile.}
+  \label{fig:standing-wave-cylinder}
+\end{figure}
+
+Schematically, as shown in Fig.~\ref{fig:standing-wave-cylinder}, we
+represent this as two counter-propagating $B$-waves along the cylinder axis,
+forming a standing mode, and a surface current $j_s$ flowing along the
+boundary within a layer of thickness $\lambda_L$. The emphasis is not on the
+exact solution of Maxwell's equations for this geometry, but on the
+interpretation: the Meissner state is viewed as a standing-wave symmetry
+between internal field energy and surface current, arranged in such a way
+that the net flux through the sample vanishes.
+
+From this point of view, a superconducting body is a \emph{phase resonator}.
+The Meissner effect reflects the ability of the system to adjust its
+standing phase and field structure to minimize the macroscopic magnetic
+energy while keeping phase coherence and field energy stored in a thin
+surface layer.
+
+% TODO: further qualitative discussion of standing modes, phase field ϕ(r),
+% and how standard London results can be rephrased in this language.
+
+\section{Josephson barriers as phase rotators}
+\label{sec:rotator}
+
+In the standard Josephson picture, a weak link between two superconducting
+banks supports a current--phase relation
+\begin{equation}
+  I_s = I_c \sin\varphi_J,
+\end{equation}
+where $\varphi_J$ is the phase difference between the order parameters on
+the two sides of the barrier. The barrier thickness and type (SIS, SNS,
+nanobridge) determine the critical current $I_c$ and the detailed form of
+the current--phase relation.
+
+In the resonant field language we instead focus on how the phase field
+$\phi(\mathbf{r})$ is \emph{turned} by the barrier. A Josephson weak link is
+pictured as a \emph{phase rotator}: a localized region where the phase flow
+changes by a finite angle $\Delta\phi$, and where the standing field
+structure is allowed to distort and store energy.
+
+Qualitatively, a very thin tunnel barrier corresponds to a sharp phase jump
+concentrated in a narrow region, with negligible internal field structure:
+the rotator is ``stiff''. As the barrier becomes thicker (for instance, in
+an SNS bridge with thickness $d\sim\xi$), the phase drop is distributed over
+a larger region and a localized pattern of currents and fields can develop
+around the weak link. In this regime the weak link behaves as a more
+``flexible'' rotator that can store field energy in a localized resonant
+field cell.
+
+% TODO: discuss qualitative phase profiles across thin vs thick barriers,
+% and how the rotator picture interpolates between tunneling-dominated and
+% field-storage-dominated regimes.
+
+\section{Thick weak links and localized Resonant Field Cells}
+\label{sec:thick-cell}
+
+A key qualitative prediction of the resonant field picture is that thick
+weak links (for example, SNS bridges with normal-layer thickness $d$ of
+order the coherence length $\xi$) can host localized field structures that
+are much more responsive to external excitation than thin tunnel junctions.
+
+To make this concrete we consider a thin superconducting strip with a
+central thick weak link and a local microcoil placed above the weak-link
+region, as in Fig.~\ref{fig:thick-weak-link-geometry}. A DC bias current
+$I_{\mathrm{DC}}$ flows along the strip, while an AC current $I_{\mathrm{AC}}$
+in the microcoil produces a time-dependent magnetic field $B_{\mathrm{AC}}(t)$
+localized near the weak link.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\textwidth]{1-2.jpg}
+  \caption{Schematic geometry: a superconducting strip with a central thick
+  weak link and a local microcoil above it. A DC current $I_{\mathrm{DC}}$
+  flows along the strip, while an AC current $I_{\mathrm{AC}}$ in the coil
+  generates a local magnetic field $B_{\mathrm{AC}}(t)$ above the weak-link
+  region. The weak link acts as a phase rotator embedded in a localized
+  Resonant Field Cell.}
+  \label{fig:thick-weak-link-geometry}
+\end{figure}
+
+In the resonant field language the weak link plus its surrounding field
+structure are treated as a compact object: a phase rotator surrounded by a
+Resonant Field Cell. The cell can support a quasi-standing mode of current
+and field, which couples the external drive from the coil to the phase
+across the weak link. The strength of this coupling is characterized by a
+dimensionless phase--flux coefficient $\alpha$, defined at the effective
+level by
+\begin{equation}
+  \delta\varphi_{\mathrm{mag}}(t)
+  = \alpha\,\frac{2\pi}{\Phi_0}\,\Phi_{\mathrm{AC}}(t),
+\end{equation}
+where $\Phi_{\mathrm{AC}}(t)$ is the effective flux seen by the weak link,
+and $\delta\varphi_{\mathrm{mag}}(t)$ is the magnetic contribution to the
+Josephson phase.
+
+Thin junctions typically have extremely small $|\alpha|$, so that a local
+coil produces negligible phase modulation. Thick weak links with a well
+developed Resonant Field Cell, on the other hand, can in principle reach
+$|\alpha|\sim 0.1$--$1$ under resonant excitation, making them strong phase
+rotators controllable by local microcoils.
+
+% TODO: discuss qualitatively how the RF Cell emerges as d increases, and how
+% energy is shared between phase flow and local magnetic structure.
+
+\section{Qualitative dependence $\alpha(d)$ and the strong--rotator regime}
+\label{sec:alpha-d}
+
+From the resonant field viewpoint the dependence of $|\alpha|$ on the
+thickness $d$ of the weak link is expected to be non-monotonic:
+
+\begin{itemize}
+  \item For very thin barriers ($d\ll\xi$), the phase drop is sharp and the
+  internal field structure is negligible; the weak link behaves as a very
+  weak rotator with $|\alpha(d)|\ll 10^{-2}$.
+
+  \item For $d\sim\xi$ (thick SNS bridges), the phase drop is spread over
+  a wider region, a localized standing pattern of currents and fields can
+  form, and the coupling to a local microcoil can increase dramatically.
+  In this regime a well defined Resonant Field Cell appears around the weak
+  link, and $|\alpha(d)|$ can reach values of order $0.1$--$1$ under
+  resonant drive.
+
+  \item For very large $d\gg\xi$, the superconducting coupling across the
+  weak link is degraded, the cell becomes diffuse and lossy, and $|\alpha(d)|$
+  is expected to decrease again.
+\end{itemize}
+
+Qualitatively, one can introduce a target range for a \emph{strong rotator}
+regime,
+\begin{equation}
+  |\alpha_{\mathrm{target}}|\sim 0.3\text{--}0.6,\qquad d\sim\xi,
+\end{equation}
+corresponding to a two-- to three--order-of-magnitude enhancement of local
+phase sensitivity compared to the tunnel limit. The detailed shape of
+$\alpha(d)$ and its frequency dependence $\alpha(d,\omega)$ must eventually
+be obtained from microscopic calculations or from experiment. In the
+companion Part I-B the same picture is developed within the classical
+GL/Usadel + RCSJ framework, and a simple oscillator estimate
+$\alpha_{\mathrm{res}}\approx\alpha_{\mathrm{static}}Q$ is derived for
+resonant enhancement of the phase response.
+
+% TODO: include a simple schematic plot of |α(d)| vs d/ξ if desired.
+
+\section{Possible phase-control experiments with local microcoils}
+\label{sec:experiments}
+
+The resonant field picture suggests a simple and direct experimental test:
+take a thick SNS weak link (with $d\sim\xi$) embedded in a superconducting
+strip, place a microcoil above it, and measure coil-driven phase modulation
+via Shapiro steps or other phase-sensitive signatures.
+
+In the standard Josephson framework, Shapiro steps on the $I$--$V$
+characteristic arise when the phase is driven by an AC voltage at frequency
+$\omega$, leading to phase locking and quantized voltage plateaus. In the
+present context, the coil acts as a \emph{magnetic} drive: an AC current
+$I_{\mathrm{AC}}(t)$ generates an AC flux $\Phi_{\mathrm{AC}}(t)$, which
+modulates the phase via the phase--flux coupling characterized by $\alpha$.
+In a weak rotator ($|\alpha|\ll10^{-2}$), coil-only drive produces
+negligible Shapiro steps; in a strong rotator ($|\alpha|\sim 0.3$--$0.6$),
+the same drive produces clearly visible steps, even without a direct RF
+voltage on the junction.
+
+An experiment of this type would provide a direct measurement of $\alpha(d)$
+for different weak-link thicknesses, and would test the qualitative
+prediction that thick SNS bridges can act as strong phase rotators. A more
+detailed design and analysis of such an experiment is the subject of the
+companion device-oriented work \emph{Magnetic Phase Control of a Thick SNS
+Weak Link}, which builds on both the present Manifest I and the classical
+framework of Part I-B.
+
+% TODO: outline specific measurement protocols if desired.
+\section{Outlook and relation to the Phase Geometry Series}
+\label{sec:outlook}
+
+In this Manifest I we have introduced the idea of \emph{resonant field
+symmetry} as an intuitive, standing-wave picture of superconducting
+screening and weak links. Superconductors are treated as phase resonators,
+Josephson barriers as phase rotators, and thick weak links as centers of
+localized Resonant Field Cells that can strongly couple local magnetic
+excitation to the Josephson phase.
+
+The present work is deliberately phenomenological and device-oriented. The
+companion paper \emph{Resonant Field Framework and Classical Basis}
+(Phase Geometry Series --- Part I-B) develops the same ideas in a more
+technical form for a concrete system: a thick SNS weak link driven by a
+local microcoil. There the phase--flux coefficient $\alpha(d,\omega)$ is
+defined as a calculable response function within the GL/Usadel,
+London--Maxwell and RCSJ framework, and the strong--rotator regime
+$|\alpha|\sim 0.3$--$0.6$ is identified as a realistic target for resonant
+SNS structures.
+
+In \emph{Phase Geometry Series --- Part II} we take a different step: the
+macroscopic phase is embedded into a five-dimensional phase-fibre geometry
+of Kaluza--Klein type, and used as a time-keeping variable for
+\emph{phase clocks} in weak gravitational fields. There we derive a
+phase-rate law $d\varphi/dt = \omega_0\sqrt{-g_{00}}$ and apply it to the
+gravitational redshift of Josephson frequencies and rotation-induced phase
+shifts in SQUIDs. In \emph{Phase Geometry Series --- Part III} we further
+develop a phase-field version of Newtonian gravity, where gradients of a
+phase field act as an effective mass density sourcing the usual Poisson
+equation, and phase clocks probe the resulting potential.
+
+Together, Manifest I, its Part I-B companion and Parts II--III of the Phase
+Geometry Series provide three complementary layers:
+a phenomenological standing-wave picture of superconducting structures,
+a classical GL/London/RCSJ dictionary for phase rotators and resonant cells,
+and a phase-geometric framework that connects macroscopic coherence to weak
+gravitational and inertial effects.
+
+
+\begin{itemize}
+  \item an \emph{intuitive} standing-wave and rotator picture of
+  superconducting coherence (Manifest I);
+  \item a \emph{calculational} framework that ties this picture to the
+  standard GL/Usadel + London--Maxwell + RCSJ theory and to measurable
+  quantities such as $\alpha(d,\omega)$ (Part I-B);
+  \item a more \emph{geometric} viewpoint in which phase and electromagnetic
+  structure are embedded into an extended spacetime-like geometry used for
+  phase clocks and weak gravity (Parts II and III).
+\end{itemize}
+
+The goal is not to replace the existing theories, but to provide a coherent
+phase--geometric language that makes it easier to think about, design and
+generalize superconducting devices and phase-based clocks. The resonant
+field symmetry introduced here is the first step in that direction.
+
+\section*{Acknowledgements}
+
+% (Placeholder for acknowledgements)
+
+\begin{thebibliography}{9}
+
+\bibitem{PartIB}
+A.~Turchanov, \emph{Resonant Field Framework and Classical Basis for
+Magnetic Phase Control of a Thick SNS Weak Link}, Phase Geometry Series ---
+Part I-B, preprint (2025).
+
+\bibitem{PartII}
+A.~Turchanov, \emph{Phase-Coherent Josephson Devices as Clocks in Weak
+Gravitational Fields}, Phase Geometry Series --- Part II, preprint (2025).
+
+\bibitem{PartIII}
+A.~Turchanov, \emph{Phase-Field Newtonian Gravity and Phase Clocks},
+Phase Geometry Series --- Part III, preprint (2025).
+
+\end{thebibliography}
+
+\end{document}

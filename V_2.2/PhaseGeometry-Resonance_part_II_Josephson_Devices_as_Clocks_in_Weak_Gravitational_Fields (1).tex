@@ -1,0 +1,399 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+
+\title{Phase-Coherent Josephson Devices as Clocks in Weak Gravitational Fields\\[4pt]
+  \large PhaseGeometry-Resonance --- Part II}
+
+\author{Aleksey Turchanov}
+
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{plain}
+\vspace{-1em}
+
+\begin{center}
+  \scriptsize Licensed under CC BY 4.0 Zenodo DOI: 10.5281/zenodo.17807163
+\end{center}
+
+\vspace{1.5em}
+
+\begin{abstract}
+\paragraph{Problem.}
+We ask how macroscopic superconducting phases and Josephson devices behave as clocks in weak gravitational fields. In particular, we want a minimal geometrical language in which condensate phases act as internal clock variables, without modifying general relativity (GR), and we want the corresponding frequency shifts for realistic Josephson structures.
+
+\paragraph{Approach.}
+We use a simple phase-geometric framework: a five-dimensional Kaluza--Klein--type metric with a compact U(1) phase fibre. The electromagnetic potential appears as the U(1) connection, and the superconducting condensate phase becomes the fibre coordinate of a macroscopic section. In the weak-field limit we identify the phase as an internal clock and derive a phase-rate relation that connects its time evolution to the metric component \(g_{00}\).
+
+\paragraph{Result / use.}
+In this setting we recover standard Maxwell electrodynamics and the London/Josephson relations for a macroscopic condensate phase. In a static weak gravitational field we obtain
+\begin{equation}
+  \frac{d\varphi}{dt} = \omega_0 \sqrt{-g_{00}},
+\end{equation}
+which is just the familiar gravitational redshift re-expressed as a change in phase-rotation rate for any phase-based clock. Applied to Josephson junctions, this yields the expected gravitational redshift of the ac-Josephson frequency and rotation-induced (Sagnac-like) phase shifts in SQUID interferometers. We estimate the size of these effects for realistic Josephson voltage standards and comment on stability and systematic errors in possible experiments. The main contribution is an interpretive phase-geometric parametrisation that puts superconducting phase dynamics and weak-field gravity into one compact language.
+
+\paragraph{Standard: we recover}
+\begin{itemize}
+  \item Maxwell electrodynamics from a Kaluza--Klein metric with a compact U(1) fibre.
+  \item London electrodynamics and Josephson relations from a covariant phase derivative.
+  \item Gravitational redshift and Sagnac-type phase shifts in the weak-field limit, with all observable predictions matching standard GR and superconductivity.
+\end{itemize}
+
+\paragraph{New in this note (interpretive / organisational).}
+\begin{itemize}
+  \item A phase-geometric description in which the condensate phase acts explicitly as an internal clock variable.
+  \item A compact phase-rate relation \(d\varphi/dt = \omega_0 \sqrt{-g_{00}}\) used as a unifying representation for phase-based clocks in weak gravity.
+  \item An explicit, order-of-magnitude discussion of Josephson voltage standards and SQUID devices as clocks and sensors for weak-field gravitation and rotation, framed entirely within established physics.
+\end{itemize}
+\end{abstract}
+
+\section{Introduction}
+
+Macroscopic quantum coherence turns phase into an observable coordinate. In superconductors, the Meissner effect, London electrodynamics and Josephson relations show that supercurrents are governed by gradients of a macroscopic phase \cite{Josephson1962,Likharev}. At the same time, in general relativity (GR) gravitation modifies the local rate of clocks, i.e.\ the projection of physical evolution onto the time coordinate of spacetime \cite{Will}. It is natural to ask how these two threads fit together: can one treat superconducting phases as clock variables in a weak gravitational field, and can Josephson devices serve as precision probes of gravitational redshift and rotation?
+
+Concretely, we address three questions:
+\begin{enumerate}
+  \item Can one formulate a simple geometric description in which the condensate phase plays the role of an internal clock variable?
+  \item Does such a description reproduce the standard gravitational redshift without modifying GR?
+  \item What is the magnitude of the resulting frequency shifts for realistic Josephson devices, and are they in principle observable?
+\end{enumerate}
+
+To answer these questions we adopt a minimal phase-geometric language: a five-dimensional Kaluza--Klein (KK)--style metric with a compact \(S^1\) fibre carrying a phase coordinate \(\varphi\) \cite{OverduinWesson}. The electromagnetic potential enters as the U(1) connection on this fibre, and the superconducting condensate phase is identified with the fibre coordinate of a macroscopic section. The four-dimensional metric \(g_{\mu\nu}\) is the usual weak-field spacetime metric; we do not alter GR, and all observable results coincide with standard GR and superconductivity.
+
+In this language we show that:
+\begin{itemize}
+  \item at the field-theory level, the KK ansatz reproduces Maxwell electrodynamics in four dimensions;
+  \item when a coherent matter sector is included, London and Josephson physics follow from a covariant phase derivative;
+  \item gravitational redshift appears as a rescaling of the phase-rotation rate \(d\varphi/dt \propto \sqrt{-g_{00}}\) for any phase-based clock.
+\end{itemize}
+
+In the weak-field regime the corresponding redshift and rotation effects reduce to the usual GR formulas. The framework should therefore be viewed as an interpretive bridge between coherence as geometry and standard physics, not as a replacement for GR or microscopic BCS theory. It complements the more device-oriented resonant-field picture of Part~I of the Phase Geometry Series \cite{TurchanovPartI,TurchanovPartIB} and the phase-field Newtonian model of Part~III \cite{TurchanovPartIII}.
+
+The structure of the paper is as follows. In Sec.~\ref{sec:busy} we summarise the problem, method and a representative example for the busy reader. In Sec.~\ref{sec:superconducting_phase} we briefly recall the phase description of superconductors and Josephson junctions. In Sec.~\ref{sec:kk_metric} we introduce the phase-fibre Kaluza--Klein ansatz and indicate how Maxwell electrodynamics and London/Josephson relations arise in this language. In Sec.~\ref{sec:phase_clocks} we derive the universal phase-rate relation \(d\varphi/dt = \omega_0 \sqrt{-g_{00}}\) in the weak-field limit. In Sec.~\ref{sec:applications} we apply this result to Josephson voltage standards and SQUID interferometers, estimating the expected frequency shifts and discussing possible experimental strategies. In Sec.~\ref{sec:discussion} we summarise and comment on standard versus new elements of the framework.
+
+Throughout we use the metric signature \((-,+,+,+)\), set \(c=1\) unless explicitly restored, and work in the weak-field regime where \(|\Phi|\ll 1\) and
+\begin{equation}
+  g_{00} \approx -(1+2\Phi),
+\end{equation}
+with \(\Phi\) the Newtonian potential.
+
+\subsection{Problem, method, example (for a busy physicist)}
+\label{sec:busy}
+
+\paragraph{Problem / question.}
+We want to describe macroscopic superconducting phases as internal clock variables in a weak gravitational field, and to interpret Josephson devices (junctions, SQUIDs) as clocks or interferometers whose frequencies and phases are subject to gravitational redshift and rotation. The question is whether this can be done in a simple geometric language that leaves GR and standard superconductivity intact, and what size of frequency shifts is expected for realistic devices.
+
+\paragraph{Method / construction.}
+We introduce a five-dimensional Kaluza--Klein metric with a compact \(S^1\) phase fibre. The four-dimensional part \(g_{\mu\nu}(x)\) encodes gravity, while the electromagnetic potential \(A_\mu(x)\) appears as the U(1) connection on the phase fibre. A macroscopic superconducting state corresponds to a section \(\varphi(x)\), and the condensate phase is treated as an internal coordinate whose proper-time evolution defines an intrinsic frequency \(\omega_0\). In a static weak field, relating proper time \(\tau\) to coordinate time \(t\) yields the phase-rate relation
+\begin{equation}
+  \frac{d\varphi}{dt} = \omega_0 \sqrt{-g_{00}},
+\end{equation}
+which we interpret for Josephson junctions and SQUIDs.
+
+\paragraph{Example or estimate.}
+Consider two identical Josephson junctions used as voltage standards, biased at the same voltage \(V\), but located at different gravitational potentials \(\Phi_1\) and \(\Phi_2\) in the Earth's field. Their ac-Josephson frequencies are
+\begin{equation}
+  f_{J,i} \approx f_J (1+\Phi_i), \qquad
+  f_J = \frac{2e}{h} V,
+\end{equation}
+so the relative fractional shift is
+\begin{equation}
+  \frac{\Delta f_J}{f_J} \approx \Phi_1 - \Phi_2 \equiv \Delta\Phi \approx \frac{g\,\Delta h}{c^2}.
+\end{equation}
+For a vertical separation \(\Delta h = 1\,\mathrm{m}\), this gives \(\Delta f_J/f_J \sim 10^{-16}\); for typical Josephson frequencies in the \(10^{11} - 10^{12}\,\mathrm{Hz}\) range, this corresponds to sub-millihertz differences. This is tiny but, in principle, accessible to long-term phase-coherent comparisons if systematic effects can be controlled.
+
+\section{Superconducting phase and Josephson relations}
+\label{sec:superconducting_phase}
+
+A conventional superconductor is characterised by a complex order parameter
+\begin{equation}
+  \Psi(\mathbf{r},t) = \lvert\Psi\rvert e^{i\theta(\mathbf{r},t)},
+  \label{eq:order_parameter}
+\end{equation}
+whose phase \(\theta\) is defined modulo \(2\pi\). In the London limit of fixed amplitude, the supercurrent density is
+\begin{equation}
+  \mathbf{J}_s = \frac{2 e n_s}{m} \left( \hbar \boldsymbol{\nabla}\theta - 2 e\, \mathbf{A} \right),
+  \label{eq:london_current}
+\end{equation}
+with \(n_s\) the superfluid density, \(m\) the electron mass and \(\mathbf{A}\) the vector potential. Gauge invariance under
+\begin{equation}
+  \theta \to \theta + \chi, \qquad
+  \mathbf{A} \to \mathbf{A} + \frac{\hbar}{2e} \boldsymbol{\nabla}\chi
+  \label{eq:gauge_transform}
+\end{equation}
+ensures that only gauge-invariant derivatives of the phase enter physical quantities.
+
+Across a weak link (SIS or SNS junction) the macroscopic phase acquires a finite jump \(\Delta\theta\). The dc Josephson relation is
+\begin{equation}
+  I = I_c \sin \Delta\theta,
+  \label{eq:dc_jj}
+\end{equation}
+where \(I_c\) is the critical current. Under a dc voltage bias \(V\), the gauge-invariant phase difference obeys
+\begin{equation}
+  \frac{d}{dt}\Delta\theta = \frac{2e}{\hbar} V,
+  \label{eq:phase_rate_flat}
+\end{equation}
+so the junction supports an oscillating supercurrent with frequency
+\begin{equation}
+  f_J = \frac{1}{2\pi} \frac{d}{dt}\Delta\theta = \frac{2e}{h} V.
+  \label{eq:ac_jj}
+\end{equation}
+This is the familiar ac-Josephson relation underpinning modern voltage standards \cite{Josephson1962,Likharev}.
+
+Macroscopic phase coherence therefore provides a direct operational link between time derivatives of a phase and experimentally measurable frequencies. In what follows we exploit this by treating the condensate phase (and, in particular, the Josephson phase difference \(\Delta\theta\)) as a clock variable that can be compared at different spacetime points.
+
+For clarity, we adopt the following ``phase dictionary'':
+\begin{itemize}
+  \item \(\theta(\mathbf{r},t)\): the condensate phase in a superconducting region;
+  \item \(\varphi(x)\): the phase-fibre coordinate in the KK picture (internal clock);
+  \item \(\Delta\theta\): the Josephson phase difference across a junction, which we interpret as a phase-clock variable associated with that device.
+\end{itemize}
+
+\section{Phase fibre and Kaluza--Klein metric}
+\label{sec:kk_metric}
+
+To connect superconducting phases to spacetime geometry, we introduce a simple Kaluza--Klein--type ansatz for a \((4+1)\)-dimensional metric:
+\begin{equation}
+  ds^2 = g_{\mu\nu}(x)\,dx^\mu dx^\nu
+       + R^2\left( d\varphi + k A_\mu(x)\,dx^\mu \right)^2.
+  \label{eq:kk_metric}
+\end{equation}
+Here:
+\begin{itemize}
+  \item \(g_{\mu\nu}(x)\) is the four-dimensional spacetime metric (gravity);
+  \item \(A_\mu(x)\) is the electromagnetic four-potential;
+  \item \(\varphi\) is a compact phase coordinate with period \(2\pi\);
+  \item \(R\) sets the radius of the phase fibre;
+  \item \(k\) is a coupling constant relating the fibre connection to \(A_\mu\).
+\end{itemize}
+
+Geometrically, this can be viewed as a fibre bundle: each spacetime point carries a compact \(S^1\) fibre parameterised by \(\varphi\), and the electromagnetic field acts as the U(1) connection on this fibre. A macroscopic superconducting state corresponds to a section \(\varphi(x)\) of this bundle; that is, a smooth assignment of a phase coordinate to each spacetime point occupied by the condensate.
+
+Inserting the ansatz~\eqref{eq:kk_metric} into the five-dimensional Einstein--Hilbert action and integrating over the compact dimension reproduces, in the standard way, four-dimensional gravity coupled to Maxwell electrodynamics \cite{OverduinWesson}. We will not need the explicit derivation here; it is sufficient to note that:
+\begin{itemize}
+  \item the horizontal metric \(g_{\mu\nu}\) describes gravity;
+  \item the fibre connection \(k A_\mu\) encodes electromagnetism;
+  \item a phase field \(\varphi(x)\) is naturally associated with a charged condensate.
+\end{itemize}
+
+In this language, the Josephson phase difference across a junction is simply the difference of \(\varphi\) evaluated on the two sides of a thin barrier, and gauge transformations correspond to shifts of the fibre coordinate. The covariant derivative of the condensate phase inherits the familiar minimal coupling to \(A_\mu\), so that London electrodynamics and Josephson relations can be written compactly in terms of derivatives of \(\varphi\) along the fibre.
+
+In the rest of the paper we will work mainly with the effective four-dimensional description and use the KK picture as an organisational tool that keeps phase, electromagnetism and gravity in a single geometric framework.
+
+\section{Phase-based clocks and weak-field gravity}
+\label{sec:phase_clocks}
+
+Consider a static weak gravitational field described (locally) by the metric
+\begin{equation}
+  ds^2 = -(1+2\Phi(\mathbf{r}))\,dt^2
+        + (1-2\Phi(\mathbf{r}))\,d\mathbf{r}^2,
+  \qquad \lvert\Phi\rvert \ll 1.
+  \label{eq:weak_field_metric}
+\end{equation}
+A standard result of GR is that any local frequency \(\omega_{\text{loc}}\) is related to a reference frequency \(\omega_\infty\) (e.g.\ measured at infinity or in a reference laboratory) by
+\begin{equation}
+  \omega_{\text{loc}} = \omega_\infty \sqrt{-g_{00}} \approx \omega_\infty (1+\Phi),
+  \label{eq:gr_redshift}
+\end{equation}
+where \(g_{00} = -(1+2\Phi)\) \cite{PoundRebka,Will}. This has been confirmed in atomic-clock and nuclear-resonance experiments.
+
+In the phase-geometric picture, we identify the condensate phase (or a related phase variable) as an internal clock with intrinsic frequency \(\omega_0\) in proper time. Along a worldline with proper time \(\tau\) we write
+\begin{equation}
+  \frac{d\varphi}{d\tau} = \omega_0.
+  \label{eq:dphi_dtau}
+\end{equation}
+Relating proper time to coordinate time by
+\begin{equation}
+  d\tau = \sqrt{-g_{00}}\,dt,
+\end{equation}
+we obtain
+\begin{equation}
+  \frac{d\varphi}{dt}
+    = \frac{d\varphi}{d\tau}\frac{d\tau}{dt}
+    = \omega_0 \sqrt{-g_{00}}.
+  \label{eq:phase_rate_exact}
+\end{equation}
+This is the central phase-rate relation:
+\begin{equation}
+  \frac{d\varphi}{dt} = \omega_0 \sqrt{-g_{00}}.
+  \label{eq:phase_rate_central}
+\end{equation}
+It holds for any phase-based clock whose phase advances uniformly in proper time. The gravitational redshift is thus re-expressed as a position-dependent rate of phase rotation in a gravitational field.
+
+Expanding for weak fields using \eqref{eq:weak_field_metric},
+\begin{equation}
+  \frac{d\varphi}{dt}
+    = \omega_0 \sqrt{1+2\Phi}
+    \approx \omega_0 (1+\Phi),
+  \label{eq:phase_rate_weak}
+\end{equation}
+so two identical phase clocks at potentials \(\Phi_1\) and \(\Phi_2\) accumulate a relative phase difference
+\begin{equation}
+  \Delta\varphi(t) \approx \omega_0 (\Phi_1 - \Phi_2)\, t.
+  \label{eq:phase_difference}
+\end{equation}
+
+For a Josephson device, \(\omega_0\) is set by the relevant microscopic or macroscopic energy scale, such as the Josephson coupling and electromagnetic bias, as discussed below. We emphasise that no modification of GR is introduced: eq.~\eqref{eq:phase_rate_exact} is just the usual gravitational redshift written in the language of phase dynamics.
+
+\section{Applications to Josephson devices}
+\label{sec:applications}
+
+We now apply the phase-rate relation \eqref{eq:phase_rate_central} to specific superconducting structures.
+
+\subsection{Gravitational redshift of the ac-Josephson frequency}
+\label{sec:redshift_jj}
+
+Consider two identical Josephson junctions biased at the same voltage \(V\), located at two different gravitational potentials \(\Phi_1\) and \(\Phi_2\). In flat spacetime their ac-Josephson frequencies are identical:
+\begin{equation}
+  f_J = \frac{2e}{h} V.
+  \label{eq:fJ_flat}
+\end{equation}
+In the phase-geometric language, the phase difference \(\Delta\theta(t)\) across each junction plays the role of a clock variable. The local Josephson frequency picks up the usual gravitational factor,
+\begin{equation}
+  \omega_{J}(\Phi_i) = \omega_{J}^{(\infty)} \sqrt{-g_{00}(\Phi_i)},
+\end{equation}
+so that
+\begin{equation}
+  f_{J,i} \approx f_J (1+\Phi_i).
+  \label{eq:fJ_phi}
+\end{equation}
+The relative fractional shift is therefore
+\begin{equation}
+  \frac{\Delta f_J}{f_J}
+    = \frac{f_{J,1} - f_{J,2}}{f_J}
+    \approx \Phi_1 - \Phi_2 \equiv \Delta\Phi.
+  \label{eq:fractional_shift}
+\end{equation}
+This is simply the standard gravitational redshift formula, interpreted as a small difference in ac-Josephson frequencies between two otherwise identical voltage standards at different heights.
+
+For a vertical separation \(\Delta h\) in the Earth's field,
+\begin{equation}
+  \Delta\Phi \approx \frac{g\,\Delta h}{c^2},
+\end{equation}
+so
+\begin{equation}
+  \frac{\Delta f_J}{f_J}
+    \approx \frac{g\,\Delta h}{c^2}
+    \sim 10^{-16} \left( \frac{\Delta h}{1\,\mathrm{m}} \right).
+  \label{eq:fractional_shift_numeric}
+\end{equation}
+For a typical Josephson frequency in the \(10^{11} - 10^{12}\,\mathrm{Hz}\) range, this corresponds to sub-millihertz differences. In principle, such tiny shifts could be accessed by long-term phase-coherent comparison of two standards; in practice, stability and systematic control are likely to dominate over fundamental limitations. A realistic experimental proposal would have to address noise, drift and environmental coupling in detail; here we restrict ourselves to order-of-magnitude estimates.
+
+\subsection{Rotation-induced (Sagnac-like) phase in a SQUID}
+\label{sec:sagnac_squid}
+
+As a second application, consider a superconducting loop (SQUID) of area \(S\) rotating with angular velocity \(\boldsymbol{\Omega}\). In standard treatments, rotation leads to a Sagnac-like phase shift for coherent matter waves. In our language, the geometric phase acquired by the condensate over a closed loop is
+\begin{equation}
+  \Delta\theta_{\Omega}
+    = \frac{2 m_{\mathrm{eff}}}{\hbar} \, \boldsymbol{\Omega}\cdot\mathbf{S},
+  \label{eq:sagnac_phase}
+\end{equation}
+where \(m_{\mathrm{eff}}\) is the effective mass associated with the Cooper pair (or relevant quasiparticle), and \(\mathbf{S}\) is the oriented area vector. This phase shift manifests as a shift of the interference pattern in a SQUID and can be understood either in the usual charge--flux picture (as an effective vector potential) or as a holonomy of the U(1) connection on the phase fibre induced by non-inertial motion.
+
+When rotation is treated within standard relativity, the resulting phase shift coincides with the usual Sagnac effect. The phase-geometric picture provides a unified discussion of both gravitational and rotational contributions to the superconducting phase, again without modifying GR.
+
+\section{Discussion, standard vs new, and outlook}
+\label{sec:discussion}
+
+We have described a minimal phase-geometric framework in which macroscopic superconducting phases act as clocks in weak gravitational fields. The key technical result is the phase-rate relation
+\begin{equation}
+  \frac{d\varphi}{dt} = \omega_0 \sqrt{-g_{00}},
+\end{equation}
+obtained by treating the condensate phase as an internal clock variable that evolves uniformly in proper time. Applied to Josephson junctions and SQUIDs, this reproduces:
+\begin{itemize}
+  \item the standard gravitational redshift of clock frequencies;
+  \item rotation-induced Sagnac-like phase shifts;
+\end{itemize}
+without any modification of GR or standard superconductivity.
+
+\subsection{Standard physics used}
+
+In more explicit terms, the framework relies on:
+\begin{itemize}
+  \item \textbf{Standard GR in the weak-field regime:} a static metric with
+    \(g_{00} \approx -(1+2\Phi)\) and gravitational redshift
+    \(\omega_{\text{loc}} = \omega_\infty \sqrt{-g_{00}}\).
+  \item \textbf{Textbook superconductivity:} London electrodynamics and the Josephson relations
+    \(I = I_c \sin\Delta\theta\),
+    \(d\Delta\theta/dt = (2e/\hbar) V\),
+    ac-Josephson frequency \(f_J = (2e/h) V\).
+  \item \textbf{Standard Kaluza--Klein geometry:} gravity and Maxwell electrodynamics emerging from a five-dimensional metric with a compact U(1) fibre.
+  \item \textbf{Known interferometric effects:} Sagnac-type phase shifts for rotating matter-wave or superconducting loops.
+\end{itemize}
+All measurable predictions in this note agree with these standard ingredients.
+
+\subsection{My contribution in this note}
+
+The genuinely new elements are modest and mainly interpretive:
+\begin{itemize}
+  \item A phase-geometric language where the condensate phase is explicitly regarded as an internal clock coordinate \(\varphi\) living on a compact U(1) fibre.
+  \item A compact phase-rate relation \(d\varphi/dt = \omega_0 \sqrt{-g_{00}}\) used as a unifying representation of gravitational redshift for any phase-based clock.
+  \item A coherent narrative that treats Josephson junctions and SQUIDs as clocks and interferometers within the same geometric picture, with simple order-of-magnitude estimates for realistic devices.
+\end{itemize}
+This is an interpretive phase-geometric reformulation of known results, aimed at providing a compact bridge between condensed-matter systems and weak-field gravitational physics.
+
+\subsection{Outlook}
+
+From an experimental perspective, the predicted fractional frequency shifts are extremely small for laboratory-scale height differences, but they may still be relevant for next-generation Josephson metrology and quantum sensors. Long-term phase-coherent comparisons of spatially separated superconducting standards, possibly combined with transportable systems or space-based platforms, could in principle access such effects if systematic errors are tightly controlled.
+
+More broadly, the phase-geometric language developed here is intended as a reusable tool for connecting macroscopic coherence to gravitational and inertial effects. In the companion parts of the Phase Geometry Series we apply similar ideas to static phase fields and effective Newtonian gravity \cite{TurchanovPartIII}, and to a more detailed phase-based description of superconducting devices and phase rotators \cite{TurchanovPartI,TurchanovPartIB}. The present work is deliberately conservative: it stays entirely within established physics and focuses on how familiar Josephson devices can be viewed and used as clocks in weak gravitational fields.
+
+\section*{Acknowledgements}
+
+The author thanks colleagues and collaborators for discussions on phase geometry, analogue gravity and phase-based clocks.
+
+\begin{thebibliography}{99}
+
+\bibitem{TurchanovPartI}
+A.~Turchanov,
+\newblock ``Resonant Field Symmetry in Superconductors: A Standing-Wave Picture of Meissner Screening and Josephson Barriers,''
+\newblock Phase Geometry Series --- Part I, preprint (2025).
+
+\bibitem{TurchanovPartIB}
+A.~Turchanov,
+\newblock ``Resonant Field Framework and Classical Basis for Magnetic Phase Control of a Thick SNS Weak Link,''
+\newblock Phase Geometry Series --- Part I-B, preprint (2025).
+
+\bibitem{TurchanovPartIII}
+A.~Turchanov,
+\newblock ``Phase-Field Newtonian Gravity and Phase Clocks,''
+\newblock Phase Geometry Series --- Part III, preprint (2025).
+
+\bibitem{Josephson1962}
+B.~D. Josephson,
+\newblock ``Possible new effects in superconductive tunnelling,''
+\newblock Physics Letters {\bf 1}, 251--253 (1962).
+
+\bibitem{Likharev}
+K.~K. Likharev,
+\newblock {\em Dynamics of Josephson Junctions and Circuits},
+\newblock Gordon and Breach, New York, 1986.
+
+\bibitem{OverduinWesson}
+J.~M. Overduin and P.~S. Wesson,
+\newblock ``Kaluza--Klein gravity,''
+\newblock Physics Reports {\bf 283}, 303--378 (1997).
+
+\bibitem{PoundRebka}
+R.~V. Pound and G.~A. Rebka Jr.,
+\newblock ``Gravitational Red-Shift in Nuclear Resonance,''
+\newblock Physical Review Letters {\bf 3}, 439--441 (1959).
+
+\bibitem{Will}
+C.~M. Will,
+\newblock {\em Theory and Experiment in Gravitational Physics},
+\newblock Cambridge University Press, Cambridge, 1993.
+
+\end{thebibliography}
+
+\end{document}

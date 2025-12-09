@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{array}          % ← ЭТО ОБЯЗАТЕЛЬНО
+\usepackage{booktabs}       % если хочешь красивые линии
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+\begin{figure}[ht]
+  \centering
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{
+    >{\centering\arraybackslash}p{0.42\textwidth}
+    c 
+    >{\centering\arraybackslash}p{0.42\textwidth}
+  }
+    \multicolumn{1}{c}{\textbf{Resonant Field framework}} & &
+    \multicolumn{1}{c}{\textbf{Classical description}} \\[6pt]
+    \midrule
+    Phase field $\phi(\mathbf{r})$ & $\longleftrightarrow$ &
+    Order-parameter phase $\theta(\mathbf{r})$ (GL/Usadel) \\[8pt]
+    
+    Phase rotator & $\longleftrightarrow$ &
+    Weak link with large $\partial\varphi_J/\partial\Phi_{\mathrm{ext}}$ \\[8pt]
+    
+    Resonant Field Cell & $\longleftrightarrow$ &
+    Localized GL+Maxwell mode (phase, $j_s$, $B$) near the weak link \\[8pt]
+    
+    Phase--flux coefficient $\alpha$ & $\longleftrightarrow$ &
+    $\alpha(d,\omega)=\frac{\Phi_0}{2\pi}
+      \left.\frac{\partial\varphi_J}{\partial\Phi_{\mathrm{ext}}}\right|_{\omega}$ \\[12pt]
+    
+    Phase--Control Equation & $\longleftrightarrow$ &
+    Linearized RCSJ with external flux \\[8pt]
+    
+    Strong--rotator regime & $\longleftrightarrow$ &
+    Thick SNS, $d\sim\xi$, with
+    $\alpha_{\mathrm{res}}\simeq\alpha_{\mathrm{static}}Q\sim 0.3$--$0.6$ \\
+    \bottomrule
+  \end{tabular}
+  
+  \caption{Mapping between the Resonant Field framework and the classical description.}
+  \label{fig:mapping}
+\end{figure}
+
+\end{document}

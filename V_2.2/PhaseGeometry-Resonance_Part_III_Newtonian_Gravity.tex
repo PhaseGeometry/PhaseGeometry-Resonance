@@ -1,0 +1,472 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titling} % для сдвига заголовка
+\geometry{margin=1in}
+
+\numberwithin{equation}{section}
+
+% поднять шапку на ~1 см вверх
+\setlength{\droptitle}{-1cm}
+
+\title{Phase Geometry Series --- Part III\\[4pt]
+Phase-Field Newtonian Gravity and Phase Clocks}
+
+\author{Aleksey Turchanov}
+
+\date{November 2025\\[0.3em]
+\scriptsize Licensed under CC BY 4.0. See the Zenodo record (DOI: 10.5281/zenodo.17691420)}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We propose a simple phase-field model that reproduces standard Newtonian
+gravity while tying the gravitational potential to the gradient energy of
+a static phase field. The construction is deliberately modest: it is
+non-relativistic, static, and restricted to the weak-field regime, but it
+is mathematically consistent and compatible with the usual Newtonian
+picture. Any static phase configuration $\varphi(\mathbf x)$ generates an
+effective mass density $\rho_{\mathrm{eff}}(\mathbf x)\propto
+|\nabla\varphi(\mathbf x)|^2$, which acts as a source for the Newtonian
+potential $\Phi(\mathbf x)$ through the Poisson equation. Localised phase
+defects then behave as effective gravitating masses with a $1/r$
+far-field potential.
+
+We further connect this phase-field gravity to phase-based clocks
+(Josephson clocks) by embedding the potential $\Phi(\mathbf x)$ into the
+weak-field relation for the metric component $g_{00}$ and the corresponding
+gravitational redshift of clock frequencies. In this way, the same phase
+field that sources the gravitational potential also controls the local
+ticking rate of phase clocks. The result is a simple and transparent
+``Newtonian floor'' for phase geometry: standard Newtonian dynamics and
+weak-field time dilation expressed entirely in terms of a static phase
+texture.
+
+The phase-field coupling constant $\kappa$ introduced here is a
+phenomenological parameter that measures how strongly phase-gradient
+energy sources an effective Newtonian potential. It is \emph{distinct
+from} the dimensionless phase--flux coefficient $\alpha(d,\omega)$ used
+in Parts~I and~I-B of the series for superconducting phase rotators.
+\end{abstract}
+
+
+\tableofcontents
+
+\section{Introduction}
+
+The idea that geometry and phase are connected appears in many parts of
+physics: in superconductivity and superfluidity, in Berry phases, and in
+analogue gravity. In this series of works on phase geometry we explore
+this connection systematically. Part~I discussed resonant field symmetry
+in superconductors, and Part~II introduced phase-based clocks (Josephson
+clocks) in weak gravitational fields using a five-dimensional
+phase-fibre geometry.
+
+This work is Part~III of the Phase Geometry Series:
+\emph{Superconductivity and Weak Gravity}, which develops a unified
+phase-based view of resonant field symmetry, clocks and gravity. The
+conceptual foundations are outlined in the Series Overview, while
+Part~I discusses resonant field symmetry and Part~I-B develops a
+calculational framework for phase rotators and the phase--flux
+coefficient $\alpha(d,\omega)$ in thick SNS weak links. Part~II then
+introduces phase clocks (Josephson clocks) in weak gravitational fields.
+
+Here, in Part~III, we focus on a phenomenological phase-field model of
+Newtonian gravity and its coupling to phase clocks. We deliberately stay
+away from strong fields and full general relativity. Instead, we
+construct a phase-field Newtonian gravity in which:
+\begin{itemize}
+  \item a static phase field $\varphi(\mathbf x)$ carries gradient energy;
+  \item this energy density plays the role of an effective mass density
+    $\rho_{\mathrm{eff}}(\mathbf x)$;
+  \item the Newtonian potential $\Phi(\mathbf x)$ obeys the usual Poisson
+    equation with $\rho_{\mathrm{eff}}$ as a source;
+  \item test particles move in $\Phi(\mathbf x)$ according to standard
+    Newtonian mechanics;
+  \item phase clocks (such as Josephson clocks) experience gravitational
+    redshift determined by $\Phi(\mathbf x)$ in the weak-field limit.
+\end{itemize}
+
+The outcome is a minimal, internally consistent model: it does not
+compete with general relativity, but it provides a clear ``playground''
+where both gravity and clock rates are determined by a single static
+phase field.
+
+\section{Phase field and effective mass density}
+\label{sec:phase_mass}
+
+We consider a real scalar phase field $\varphi(\mathbf x)$ defined on
+three-dimensional space. In this work we restrict to static
+configurations, so $\varphi$ depends only on position $\mathbf x$, not on
+time.
+
+The basic assumption is that the gradient energy of $\varphi$ acts as a
+source of gravity. We introduce an effective mass density
+\begin{equation}
+  \rho_{\mathrm{eff}}(\mathbf x)
+  = \frac{\kappa}{c^2}\,|\nabla\varphi(\mathbf x)|^2,
+  \label{eq:rho_eff_def}
+\end{equation}
+where $c$ is the speed of light (used to convert energy density to mass
+density) and $\kappa$ is a phenomenological coupling constant. The
+quantity $|\nabla\varphi|^2 = \nabla\varphi\cdot\nabla\varphi$ is the
+squared gradient of the phase.
+
+We then postulate that the Newtonian potential $\Phi(\mathbf x)$
+satisfies the standard Poisson equation
+\begin{equation}
+  \nabla^2\Phi(\mathbf x) = 4\pi G\,\rho_{\mathrm{eff}}(\mathbf x),
+  \label{eq:poisson}
+\end{equation}
+with $G$ the Newtonian gravitational constant and $\nabla^2$ the
+Laplacian in three-dimensional Euclidean space.
+
+Equation~\eqref{eq:poisson} is structurally identical to the usual
+Newtonian field equation for gravity, with $\rho_{\mathrm{eff}}$ playing
+the role of the mass density. The novelty is only in the definition
+\eqref{eq:rho_eff_def} of $\rho_{\mathrm{eff}}$ in terms of the
+phase-field gradient. The parameter $\kappa$ controls how strongly a
+given phase-texture sources the effective Newtonian potential.
+
+\section{General solutions and superposition}
+
+Given $\rho_{\mathrm{eff}}(\mathbf x)$, the solution to the Poisson
+equation~\eqref{eq:poisson} with boundary condition $\Phi(\mathbf x)\to
+0$ as $|\mathbf x|\to\infty$ is the standard Newtonian potential
+\begin{equation}
+  \Phi(\mathbf x) = -G \int
+  \frac{\rho_{\mathrm{eff}}(\mathbf x')}{|\mathbf x - \mathbf x'|}
+  \,d^3x'.
+  \label{eq:Phi_rho}
+\end{equation}
+Using \eqref{eq:rho_eff_def}, we can write this directly as a functional
+of the phase field:
+\begin{equation}
+  \Phi(\mathbf x) = -\,\frac{G\kappa}{c^2} \int
+  \frac{|\nabla\varphi(\mathbf x')|^2}{|\mathbf x - \mathbf x'|}
+  \,d^3x'.
+  \label{eq:Phi_varphi}
+\end{equation}
+This expression states that the gravitational potential at point
+$\mathbf x$ is determined by the full spatial distribution of the
+phase-gradient energy.
+
+Although $\rho_{\mathrm{eff}}$ is quadratic in $\nabla\varphi$ and
+therefore nonlinear in $\varphi$, the Poisson equation is linear in
+$\Phi$. As a result, superposition holds at the level of the potential.
+If we decompose the phase field into a sum of contributions,
+\begin{equation}
+  \varphi(\mathbf x) \approx \sum_i \varphi_i(\mathbf x),
+\end{equation}
+then
+\begin{equation}
+  \rho_{\mathrm{eff}}(\mathbf x) =
+  \frac{\kappa}{c^2}\,|\nabla\varphi(\mathbf x)|^2
+  = \frac{\kappa}{c^2}\,
+    \Bigl|\sum_i \nabla\varphi_i(\mathbf x)\Bigr|^2,
+\end{equation}
+and the individual contributions to $\Phi(\mathbf x)$ can still be
+superposed via~\eqref{eq:Phi_rho}, even though $\rho_{\mathrm{eff}}$ is
+not simply a sum of separate densities.
+
+\section{Effective mass of a localized phase defect}
+\label{sec:Meff}
+
+We are particularly interested in localized phase structures, or
+\emph{phase defects}, whose gradient energy is concentrated in a finite
+region of space. For such a defect, the effective mass is defined as
+\begin{equation}
+  M_{\mathrm{eff}} = \int \rho_{\mathrm{eff}}(\mathbf x)\,d^3x
+  = \frac{\kappa}{c^2}
+    \int |\nabla\varphi(\mathbf x)|^2\,d^3x.
+  \label{eq:Meff_def}
+\end{equation}
+If the defect is localized such that $\rho_{\mathrm{eff}}$ vanishes
+sufficiently quickly at large $|\mathbf x|$, then for distances
+$r = |\mathbf x|$ much larger than the size of the defect, the potential
+takes the familiar form
+\begin{equation}
+  \Phi(r) \approx -\,\frac{G M_{\mathrm{eff}}}{r},
+\end{equation}
+up to corrections of order $R/r$, where $R$ is a characteristic size of
+the defect. Thus, a localized phase defect behaves as an effective
+gravitating mass, with $M_{\mathrm{eff}}$ determined by the integrated
+phase-gradient energy.
+
+In this sense, the phase-field model provides a concrete realisation of
+the idea that phase textures can mimic point-like gravitating objects at
+long distances, while retaining a smooth internal structure.
+
+\section{Cylindrical phase defect: qualitative example}
+
+To illustrate the construction, consider a simple cylindrical defect
+centred on the $z$-axis. In cylindrical coordinates $(r,\theta,z)$ we
+assume translational symmetry along $z$ and rotational symmetry in
+$\theta$, so that $\varphi$ depends only on $r$:
+\begin{equation}
+  \varphi = \varphi(r).
+\end{equation}
+We further assume that $\varphi(r)$ interpolates between two constant
+values over a radial scale $R$, with negligible gradients outside a
+finite region.
+
+The gradient of the phase is radial, and we have
+\begin{equation}
+  |\nabla\varphi|^2 = \left(\frac{d\varphi}{dr}\right)^2.
+\end{equation}
+The effective mass per unit length along the $z$-axis is then
+\begin{equation}
+  \frac{M_{\mathrm{eff}}}{L_z}
+  = \int \rho_{\mathrm{eff}}(\mathbf x)\,d^2x_\perp
+  = \frac{\kappa}{c^2} \int
+    \left(\frac{d\varphi}{dr}\right)^2 2\pi r\,dr,
+\end{equation}
+where the integral is over the transverse plane. For a simple profile
+with characteristic gradient
+$|\mathrm d\varphi/\mathrm dr|\sim \Delta\varphi/R$ over a radial shell
+of width $\sim R$, we obtain the order-of-magnitude estimate
+\begin{equation}
+  \frac{M_{\mathrm{eff}}}{L_z}
+  \sim \frac{\kappa}{c^2}\,2\pi R
+  \left(\frac{\Delta\varphi}{R}\right)^2 R
+  \sim \frac{2\pi\kappa}{c^2}\,\frac{(\Delta\varphi)^2}{R}.
+\end{equation}
+Thus, for fixed phase contrast $\Delta\varphi$, narrower defects carry
+more effective mass per unit length, reflecting the higher concentration
+of gradient energy.
+
+This cylindrical example is only qualitative, but it shows how specific
+phase profiles map to effective mass distributions in the present
+framework.
+
+\section{Static Lagrangian formulation}
+
+The phase-field model of Newtonian gravity can be encoded in a static
+Lagrangian (or, more precisely, an energy functional). We consider a
+functional of the fields $\varphi(\mathbf x)$ and $\Phi(\mathbf x)$:
+\begin{equation}
+  \mathcal{E}[\varphi,\Phi]
+  = \int d^3x\left[
+      \frac{\kappa}{2c^2}|\nabla\varphi|^2
+      + \frac{1}{8\pi G}|\nabla\Phi|^2
+    \right].
+  \label{eq:energy_functional}
+\end{equation}
+The first term represents the gradient energy of the phase field, while
+the second is the usual field-energy of the Newtonian potential.
+
+To impose the Poisson relation between $\Phi$ and $\rho_{\mathrm{eff}}$,
+one can either:
+\begin{itemize}
+  \item treat \eqref{eq:energy_functional} as a functional of $\Phi$ only
+  and use the standard variational principle $\delta\mathcal{E}/\delta\Phi
+  = 0$ to obtain $\nabla^2\Phi = 0$ with sources encoded in boundary
+  conditions; or
+  \item introduce a Lagrange multiplier field to enforce the constraint
+  \eqref{eq:poisson} explicitly.
+\end{itemize}
+For the purposes of this phenomenological model, it is usually simpler
+to regard \eqref{eq:poisson} as the defining equation for $\Phi$ in
+terms of $\varphi$, with \eqref{eq:energy_functional} providing a useful
+way to think about the total energy stored in both the phase field and
+the gravitational potential.
+
+\section{Test-particle dynamics}
+
+Once the potential $\Phi(\mathbf x)$ is known, the motion of a classical
+test particle of mass $m$ is governed by the usual Newtonian dynamics.
+The Lagrangian for a test particle with position $\mathbf x(t)$ is
+\begin{equation}
+  L_{\mathrm{particle}} =
+  \frac{1}{2} m \dot{\mathbf x}^2 - m\Phi(\mathbf x),
+\end{equation}
+and the Euler--Lagrange equations yield
+\begin{equation}
+  m\ddot{\mathbf x} = -m\nabla\Phi(\mathbf x),
+\end{equation}
+or simply
+\begin{equation}
+  \ddot{\mathbf x} = -\nabla\Phi(\mathbf x).
+\end{equation}
+Thus, test particles move as they would in classical Newtonian gravity,
+with the only twist being that the potential $\Phi(\mathbf x)$ is itself
+sourced by the phase-gradient energy according to \eqref{eq:rho_eff_def}
+and \eqref{eq:poisson}.
+
+\section{Phase clocks and Josephson-based superconducting oscillators}
+
+In Part~II of the Phase Geometry Series, phase-based clocks were
+described within a five-dimensional phase-fibre geometry. There the key
+result was a phase-rate law of the form
+\begin{equation}
+  \frac{d\phi}{dt} = \omega_0\sqrt{g_{00}(\mathbf x)},
+\end{equation}
+where $g_{00}$ is the time-time component of the metric, $\omega_0$ is a
+reference frequency, and $\phi$ is an internal phase variable. In the
+weak-field limit, with
+\begin{equation}
+  g_{00}(\mathbf x) \simeq 1 + \frac{2\Phi(\mathbf x)}{c^2},
+\end{equation}
+this becomes
+\begin{equation}
+  \frac{d\phi}{dt} \simeq \omega_0
+  \left(1 + \frac{\Phi(\mathbf x)}{c^2}\right),
+\end{equation}
+which reproduces the familiar gravitational redshift:
+clocks deeper in the potential well tick more slowly.
+
+In the present phase-field Newtonian model, we take $\Phi(\mathbf x)$ to
+be the potential generated by the phase-gradient energy of
+$\varphi(\mathbf x)$. Phase-based clocks (including Josephson clocks)
+placed at different positions in this potential therefore experience
+different ticking rates
+\begin{equation}
+  \omega(\mathbf x) \simeq \omega_0
+  \left(1 + \frac{\Phi(\mathbf x)}{c^2}\right),
+\end{equation}
+with the fractional frequency shift
+\begin{equation}
+  \frac{\Delta\omega}{\omega_0}
+  \simeq \frac{\Delta\Phi}{c^2},
+\end{equation}
+where $\Delta\Phi$ is the potential difference between two locations.
+
+The superconducting implementations developed in Parts~I and~I-B
+provide concrete examples of phase clocks: Josephson oscillators and
+phase rotators whose frequencies and phases can, in principle, be
+measured with high precision. In that context, the present Part~III can
+be viewed as a phenomenological model for how engineered phase textures
+could mimic weak gravitational wells and redshift these clock
+frequencies.
+
+\section{Limits and domain of validity}
+
+The phase-field Newtonian model constructed here is deliberately modest
+in scope. Its domain of validity is restricted by several assumptions:
+\begin{itemize}
+  \item \textbf{Static phase field.} The phase field $\varphi(\mathbf x)$
+    is assumed to be time-independent. Allowing $\varphi(\mathbf x,t)$
+    to vary in time would introduce additional terms in both the
+    effective energy density and the metric, and is left for future
+    work.
+  \item \textbf{Weak-field regime.} The use of the Newtonian potential
+    $\Phi(\mathbf x)$ and the weak-field approximation for $g_{00}$
+    restrict the model to situations where $|\Phi|/c^2\ll 1$.
+  \item \textbf{Non-relativistic test particles.} Test particles are
+    treated within non-relativistic mechanics. Relativistic corrections
+    can be incorporated, but are not considered here.
+  \item \textbf{Phenomenological coupling.} The parameter $\kappa$ is
+    phenomenological: it is not derived from an underlying microscopic
+    theory, and may in principle depend on the physical system in which
+    the phase field is realised. It is also independent of the
+    superconducting phase--flux coefficient $\alpha(d,\omega)$ used in
+    Parts~I and~I-B.
+\end{itemize}
+Within these limits, the Newtonian sector of the phase-field model is
+well-defined and internally consistent: any static phase texture
+$\varphi(\mathbf x)$ yields an effective mass density
+$\rho_{\mathrm{eff}}(\mathbf x)$, a Newtonian potential $\Phi(\mathbf x)$
+with the usual $1/r$ far-field behaviour for localised defects, and
+standard test-particle dynamics and clock redshift in that potential.
+
+\section{Discussion and outlook}
+
+We have constructed a simple phase-field model of Newtonian gravity in
+which:
+\begin{itemize}
+  \item the effective mass density is given by the gradient energy of a
+    static phase field,
+    $\rho_{\mathrm{eff}} = (\kappa/c^2)|\nabla\varphi|^2$;
+  \item the Newtonian potential obeys the usual Poisson equation with
+    this source;
+  \item localised phase defects carry a finite effective mass
+    $M_{\mathrm{eff}}$ and generate a $1/r$ far-field potential
+    $\Phi(r) = -GM_{\mathrm{eff}}/r$;
+  \item test particles move as they would in classical Newtonian
+    gravity;
+  \item phase-based clocks experience gravitational redshift determined
+    by the same potential $\Phi(\mathbf x)$, which is itself a
+    functional of the phase texture.
+\end{itemize}
+
+On this basis, one can say that the ``Newtonian floor'' of phase
+geometry is complete: the standard physics of slow bodies and weak-field
+time dilation has been re-expressed in terms of a single static phase
+field. The coupling constant $\kappa$ encapsulates how strongly
+phase-gradient energy is allowed to act as an effective source for
+Newtonian curvature.
+
+Although deliberately modest in scope, the present phase-field
+construction has several useful consequences. First, it provides a
+single phase-based description of effective mass, Newtonian potential,
+and clock rates: the same static phase texture determines the effective
+mass density, the gravitational potential $\Phi(\mathbf x)$, and the
+local ticking of phase clocks via $g_{00}(\mathbf x)$. This offers a
+simple and conceptually transparent way to view weak gravity and time
+dilation through the lens of phase geometry.
+
+Second, the model can serve as a theoretical basis for analogue gravity
+systems in superconductors and other phase-ordered media. By
+engineering phase textures (defects, arrays, patterned structures), one
+can in principle design effective gravitational potentials and study the
+motion of quasiparticles and clocks in those backgrounds, including
+lensing-like effects and potential horizon analogues.
+
+Third, the static Newtonian framework developed here provides a starting
+point for dynamical generalisations. Allowing the phase field
+$\varphi(\mathbf x,t)$ to become time dependent would induce
+fluctuations of the effective potential and $g_{00}$, opening a route
+towards phase-field analogues of gravitational waves and other
+time-dependent gravitational phenomena in controllable laboratory
+settings.
+
+In this sense the phase-field construction is best viewed as a
+convenient playground for toy and analogue models of gravity, rather
+than as a competitor to general relativity. Its Newtonian, phase-based
+formulation makes it particularly suitable for designing and analysing
+controllable ``mini-gravity'' scenarios in superconductors and other
+phase-ordered media where the underlying phase field is directly
+accessible and, at least in principle, tunable.
+
+\section*{Acknowledgements}
+
+The author thanks colleagues and collaborators for discussions on phase
+geometry, analogue gravity and phase-based clocks.
+
+\begin{thebibliography}{9}
+
+\bibitem{PartI}
+A.~Turchanov,
+\newblock \emph{Resonant Field Symmetry in Superconductors:
+A Standing-Wave Picture of Meissner Screening and Josephson Barriers},
+Phase Geometry Series --- Part I, preprint (2025).
+
+\bibitem{PartIB}
+A.~Turchanov,
+\newblock \emph{Resonant Field Framework and Classical Basis for Magnetic
+Phase Control of a Thick SNS Weak Link},
+Phase Geometry Series --- Part I-B, preprint (2025).
+
+\bibitem{PartII}
+A.~Turchanov,
+\newblock \emph{Phase-Coherent Josephson Devices as Clocks in Weak
+Gravitational Fields},
+Phase Geometry Series --- Part II, preprint (2025).
+
+\bibitem{Overview}
+A.~Turchanov,
+\newblock \emph{Phase Geometry Series --- Overview: Coherence,
+Electromagnetism and Weak Gravity in a Phase-Based Framework},
+Zenodo (2025).
+
+\end{thebibliography}
+
+\end{document}

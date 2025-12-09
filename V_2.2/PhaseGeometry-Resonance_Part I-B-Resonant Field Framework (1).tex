@@ -1,0 +1,754 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\numberwithin{equation}{section}
+
+\title{Phase Geometry Series --- Part I-B\\[4pt]
+Resonant Field Framework and Classical Basis\\
+for Magnetic Phase Control of a Thick SNS Weak Link}
+
+\author{Aleksey Turchanov}
+\date{November 2025\\[0.3em]
+\scriptsize Licensed under CC BY 4.0. Zenodo DOI: 10.5281/zenodo.17807163}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a two-layer description of magnetic phase control in superconducting
+weak links. On the effective level, we formulate a Resonant Field (RF) framework
+in which a weak link is treated as a \emph{phase rotator}, characterized by a
+dimensionless phase--flux coefficient $\alpha$ and surrounded by a localized
+\emph{Resonant Field Cell}. On the microscopic level, we show how the same
+objects and parameters arise from the standard theory of superconducting weak
+links: Ginzburg--Landau / Usadel equations for the order parameter,
+London--Maxwell electrodynamics for currents and fields, and the RCSJ model for
+Josephson phase dynamics. We identify the normalized phase response
+\begin{equation}
+  \alpha = \frac{\Phi_0}{2\pi}\,
+  \frac{\partial \varphi_J}{\partial \Phi_{\mathrm{ext}}}\,,
+\end{equation}
+and outline how thick SNS weak links with a local microcoil could reach the
+``strong rotator'' regime $|\alpha|\sim 0.3$--$0.6$ under resonant conditions.
+% <<< добавка про playground >>>
+Although we focus on thick SNS weak links with a local microcoil as a concrete
+experimental platform, the RF framework itself is not restricted to this
+particular geometry and can, in principle, be applied to any weak-link structure
+capable of supporting localized phase-field modes.
+
+Within the broader Phase Geometry Series on superconductivity and weak gravity,
+this work plays the role of \mbox{Part I-B}: it supplies the calculational backbone
+that connects the conceptual Manifest I (Resonant Field Symmetry in
+Superconductors) to concrete device proposals on the superconducting side and to
+the phase-clock and gravity constructions developed in Parts II and III.
+\end{abstract}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Introduction}
+
+Magnetic control of the Josephson phase is usually associated with macroscopic
+loops such as dc SQUIDs, where the total phase bias is proportional to the
+enclosed flux, $\varphi_J=(2\pi/\Phi_0)\Phi$. In contrast, a single weak link
+addressed by a local microcoil is typically assumed to be almost insensitive to
+magnetic flux: the phase only weakly responds to local fields because screening
+currents in the leads suppress the effective phase--flux coupling.
+
+In Manifest I of the Phase Geometry Series, we introduced the idea that
+superconducting systems can host localized standing-field structures,
+\emph{Resonant Field Cells}, which naturally act as \emph{phase rotators}. A
+weak link that supports such a cell may then exhibit a much stronger local
+phase response than na\"ive estimates suggest.
+
+The purpose of the present Part I-B is three-fold:
+\begin{itemize}
+  \item to formulate an effective Resonant Field framework for magnetic phase
+  control in weak links, introducing the notions of phase rotator, Resonant
+  Field Cell, Phase--Control Equation and the key parameter $\alpha$;
+  \item to show how the same objects and parameters arise from the classical
+  microscopic description (Ginzburg--Landau / Usadel + London--Maxwell + RCSJ);
+  \item to provide an explicit dictionary between the RF language and the
+  classical formalism.
+\end{itemize}
+
+We focus on thick SNS weak links driven by an on-chip microcoil and ask whether
+such structures can realistically reach a strong-rotator regime with
+$|\alpha|\sim 0.3$--$0.6$.
+\\
+\\
+\\
+\section{Part I: Resonant Field Framework}
+
+\subsection{System geometry and experimental goal}
+
+We consider a superconducting strip interrupted by a central weak link of
+thickness $d$ and lateral length $L_W$. A DC bias current $I_{DC}$ flows along
+the strip, while an on-chip microcoil above the weak link carries an AC current
+$I_{AC}(t)$ and generates a local magnetic field $B_{AC}(t)$ through a thin
+insulating layer; see Fig.~\ref{fig:geometry}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.85\textwidth]{1b-1.jpg}
+  \caption{Geometry of a superconducting strip with a central thick weak link
+  and an on-chip microcoil. A DC bias current $I_{DC}$ flows along the strip,
+  while an AC current $I_{AC}$ in the microcoil generates a local magnetic
+  field $B_{AC}(t)$ in the weak-link region through a thin insulating layer.}
+  \label{fig:geometry}
+\end{figure}
+
+The experimental goal is to quantify how efficiently the local flux from the
+microcoil can rotate the Josephson phase across the weak link, and how this
+efficiency depends on the thickness $d$ and on dynamical effects such as
+resonances.
+
+\subsection{Phase field and phase flow}
+
+In the RF language, the superconducting state is described by a phase field
+$\phi(\mathbf r)$ defined over the strip, with supercurrent lines following
+the gradients of this field. When a weak link is present, the phase drop
+$\varphi_J$ across it becomes a key degree of freedom.
+
+The RF framework focuses on how phase flow is redistributed in response to
+local fields and how part of the energy may be stored in localized magnetic
+structures rather than purely in longitudinal phase gradients.
+
+\subsection{Phase rotator}
+
+A \emph{phase rotator} is a localized element in which a relatively small
+change in external magnetic flux produces a significant change in the phase
+drop $\varphi_J$. Quantitatively, we introduce the phase--flux coefficient
+$\alpha$ via
+\begin{equation}
+  \delta \varphi_J = \frac{2\pi}{\Phi_0}\,\alpha\,\delta \Phi_{\mathrm{ext}},
+\end{equation}
+so that $\alpha=1$ corresponds to the ideal SQUID limit.
+
+Thin tunnel junctions typically realize $|\alpha|\ll 10^{-2}$ and are thus
+\emph{weak rotators}. Thick SNS bridges, under appropriate conditions, may
+become \emph{strong rotators} with $|\alpha|\sim 0.3$--$0.6$.
+
+\subsection{Resonant Field Cell}
+
+We define a \emph{Resonant Field Cell} as a localized standing-field structure
+around the weak link in which phase, supercurrent and magnetic field form a
+self-consistent resonant pattern. Conceptually, the cell plays the role of a
+miniature cavity coupled to the weak link.
+
+In thin junctions the RF Cell is absent or extremely rigid; in thick SNS
+bridges it can be well-localized around the weak link and store a non-trivial
+amount of magnetic tension. Figure~\ref{fig:rfcell} shows a qualitative sketch.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{1b-2.jpg}
+  \caption{Qualitative picture of a Resonant Field Cell around a thick weak
+  link. The shaded region marks the localized cell, and the opposite vertical
+  arrows $B$ schematically indicate a standing magnetic-field pattern inside
+  the cell.}
+  \label{fig:rfcell}
+\end{figure}
+
+\subsection{Phase--flux coefficient $\alpha$}
+
+Within the RF framework we treat the total phase drop across the junction as
+\begin{equation}
+  \varphi_J = \varphi_{\mathrm{bias}} + 
+  \frac{2\pi}{\Phi_0}\,\alpha\,\Phi_{\mathrm{ext}},
+\end{equation}
+where $\varphi_{\mathrm{bias}}$ is the phase set by the DC current bias, and
+$\Phi_{\mathrm{ext}}$ is the flux created by the microcoil.
+
+The dimensionless coefficient $\alpha$ encodes how strongly the RF Cell around
+the weak link couples the external flux to the Josephson phase. In the tunnel
+limit $|\alpha|\ll 10^{-2}$; in the strong-rotator regime we aim at
+$|\alpha|\sim 0.3$--$0.6$.
+
+\subsection{Phase--Control Equation}
+
+In the small-signal limit we can write the \emph{Phase--Control Equation} as
+\begin{equation}
+  \varphi_J(t) = \varphi_{\mathrm{bias}}(t) +
+  \frac{2\pi}{\Phi_0}\,\alpha\,\Phi_{AC}(t),
+\end{equation}
+where $\Phi_{AC}(t)$ is the time-dependent coil flux. This effective equation
+captures the net result of microscopic screening currents and localized field
+patterns, and will later be derived from the RCSJ model in the classical
+formalism.
+
+\subsection{Static regimes: thin vs thick weak links}
+
+\subsubsection{Thin barrier: negligible rotator}
+
+For an SIS tunnel junction with $d\ll\xi$, the phase jump is concentrated in a
+very narrow region, the local magnetic field is small, and the effective
+phase--flux coupling is strongly screened. In RF terms:
+\begin{itemize}
+  \item the RF Cell is either absent or extremely rigid;
+  \item $|\alpha(d)|\ll 10^{-2}$ for typical geometries;
+  \item the weak link acts as a negligible rotator.
+\end{itemize}
+
+\subsubsection{Thick SNS bridge: emergence of a strong rotator}
+
+When the thickness $d$ of an SNS weak link is comparable to the coherence
+length $\xi$, the phase drop $\varphi_J$ is distributed over a wider region,
+and a localized standing structure of currents and fields can appear around the
+bridge. In RF language:
+\begin{itemize}
+  \item a well-defined RF Cell forms around the weak link;
+  \item part of the energy is stored in local magnetic tension rather than purely
+  longitudinal phase flow;
+  \item the effective coupling $\alpha(d)$ can become significantly larger than
+  in the tunnel limit.
+\end{itemize}
+
+Figure~\ref{fig:thin-thick} illustrates the contrast between thin and thick
+regimes in terms of phase profiles and field patterns.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.85\textwidth]{1b-3.jpg}
+  \caption{Qualitative comparison of phase profiles and field patterns for a
+  thin tunnel junction (left) and a thick SNS bridge (right). In the tunnel
+  limit the phase jump $\varphi(x)$ is sharply localized at the barrier and the
+  local field structure is negligible; in the thick SNS regime the phase drop
+  is distributed across the normal region and a localized RF Cell can form
+  around the bridge.}
+  \label{fig:thin-thick}
+\end{figure}
+
+\subsection{Dynamical regime and Shapiro steps}
+
+In the presence of a DC bias $I_{DC}$ and an AC phase modulation, the Josephson
+relation
+\begin{equation}
+  I(t) \approx I_c \sin\varphi_J(t)
+\end{equation}
+leads to Shapiro steps on the $I$--$V$ characteristic when the phase is locked
+to an external frequency $\omega$.
+
+Using the Phase--Control Equation with
+\begin{equation}
+  \Phi_{AC}(t) = \Phi_{0}^{(\mathrm{coil})}\sin\omega t,
+\end{equation}
+we obtain a phase modulation amplitude
+\begin{equation}
+  \Delta\varphi_{\mathrm{coil}} =
+  \alpha\,\frac{2\pi}{\Phi_0}\,\Phi_{0}^{(\mathrm{coil})}.
+\end{equation}
+The heights of Shapiro steps depend on $\Delta\varphi_{\mathrm{coil}}$, so by
+comparing coil-driven Shapiro steps with those produced by a calibrated RF
+voltage drive, one can experimentally infer $\alpha$.
+
+In the RF picture, a weak rotator ($|\alpha|\ll 10^{-2}$) will produce
+negligible Shapiro steps under coil-only drive, while a strong rotator
+($|\alpha|\sim 0.3$--$0.6$) will show clear steps even without direct RF
+excitation of the junction.
+
+\subsection{Qualitative prediction for $\alpha(d)$ and target regime}
+
+The RF framework predicts a non-monotonic dependence of $|\alpha(d)|$ on the
+thickness $d$ of the weak link:
+\begin{itemize}
+  \item for $d\ll\xi$: tunnel regime, $|\alpha(d)|\ll 10^{-2}$;
+  \item for $d\sim\xi$: thick SNS regime, formation of a strong RF Cell, and a
+  qualitative transition from negligible magnetic response to a strong rotator;
+  \item for $d\gg\xi$: degradation of superconducting coupling, smearing of the
+  RF Cell, and a reduction of $|\alpha(d)|$.
+\end{itemize}
+
+We introduce a target range for the strong-rotator regime:
+\begin{equation}
+  |\alpha_{\mathrm{target}}|\sim 0.3\text{--}0.6,\qquad d\sim\xi,
+\end{equation}
+corresponding to a $2$--$3$ orders-of-magnitude enhancement of the local phase
+sensitivity compared to the tunnel limit. Figure~\ref{fig:alpha-d} shows a
+qualitative sketch.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{1b-4.jpg}
+  \caption{Qualitative sketch of $|\alpha(d)|$ versus normalized thickness
+  $d/\xi$: small in the tunnel limit, peaking in the thick SNS regime, and
+  decreasing for very large $d$. The shaded region indicates the target
+  strong-rotator range $|\alpha|\sim 0.3$--$0.6$.}
+  \label{fig:alpha-d}
+\end{figure}
+
+The detailed shape of $\alpha(d)$ must ultimately be obtained from microscopic
+calculations (Part~II) or from experiments (e.g.\ thick SNS bridges with
+microcoils). A simple order-of-magnitude estimate for realistic SNS bridges
+and microcoils is given in Appendix~B.
+
+\section{Part II: Classical Description of the Same System}
+
+\subsection{Geometry and parameters}
+
+We now turn to the standard classical description of the same system: a
+superconducting strip with a central weak link and a local microcoil, as in
+Fig.~\ref{fig:geometry}. The weak link may be:
+\begin{itemize}
+  \item an SIS tunnel junction with barrier thickness $d$;
+  \item an SNS bridge where the normal layer has thickness $d$ and length
+  $L_W$;
+  \item a nanobridge with an effective normal region.
+\end{itemize}
+
+Material parameters include the coherence length $\xi$, London penetration
+depth $\lambda_L$, normal resistance $R_N$ of the weak link, and capacitance
+$C$.
+
+\subsection{Order parameter, phase, and supercurrent}
+
+The superconducting state is described by a complex order parameter
+\begin{equation}
+  \Psi(\mathbf r) = |\Psi(\mathbf r)|e^{i\theta(\mathbf r)},
+\end{equation}
+with phase $\theta(\mathbf r)$. In the GL/London approximation the supercurrent
+density is
+\begin{equation}
+  \mathbf j_s(\mathbf r) =
+  \frac{2e\hbar}{m^\ast}\,|\Psi(\mathbf r)|^2
+  \left(
+    \nabla\theta(\mathbf r)
+    - \frac{2e}{\hbar}\mathbf A(\mathbf r)
+  \right),
+\end{equation}
+where $\mathbf A$ is the vector potential and $\mathbf B=\nabla\times\mathbf A$.
+
+\subsection{Weak link and Josephson phase}
+
+Let $\theta_L$ and $\theta_R$ be the phases in the left and right superconducting
+banks. The Josephson phase is
+\begin{equation}
+  \varphi_J = \theta_R - \theta_L + \frac{2\pi}{\Phi_0}\,\Phi_{\mathrm{int}},
+\end{equation}
+where $\Phi_{\mathrm{int}}$ represents the internal flux contribution associated
+with the weak-link region. The current--phase relation is
+\begin{equation}
+  I_s = I_c(d)\sin\varphi_J,
+\end{equation}
+with $I_c(d)$ depending on the type and thickness of the weak link.
+
+\subsection{Static field distributions and thick SNS regime}
+
+In a thin tunnel junction:
+\begin{itemize}
+  \item $\theta(\mathbf r)$ changes abruptly across the barrier;
+  \item $|\Psi|$ is reduced only in a narrow region;
+  \item the local magnetic field associated with the junction is small.
+\end{itemize}
+
+In a thick SNS bridge ($d\sim\xi$):
+\begin{itemize}
+  \item the phase $\theta(x)$ varies smoothly across the normal region;
+  \item supercurrents and fields can form extended localized patterns around the
+  bridge;
+  \item the system may support normal modes localized near the weak link.
+\end{itemize}
+
+These localized modes are the classical counterpart of the RF Cells introduced
+earlier.
+
+\subsection{RCSJ model and external flux}
+
+The dynamics of the Josephson phase is described by the RCSJ model
+\begin{equation}
+  C\ddot{\varphi}_J + \frac{1}{R}\dot{\varphi}_J + I_c\sin\varphi_J
+  = I_{\mathrm{bias}} + I_{\mathrm{noise}},
+\end{equation}
+where $C$ is the junction capacitance, $R$ the shunt resistance,
+$I_{\mathrm{bias}}$ the bias current, and $I_{\mathrm{noise}}$ a noise term.
+
+A current $I_{\mathrm{coil}}(t)$ in the microcoil produces an external flux
+\begin{equation}
+  \Phi_{\mathrm{ext}}(t) = M I_{\mathrm{coil}}(t),
+\end{equation}
+where $M$ is the mutual inductance between the coil and the effective
+phase-sensitive loop. Due to screening and geometry, only a fraction $\eta(d)$
+of $\Phi_{\mathrm{ext}}$ actually contributes to the phase:
+\begin{equation}
+  \Phi_{\mathrm{eff}}(t) = \eta(d)\,\Phi_{\mathrm{ext}}(t).
+\end{equation}
+The phase then acquires an additional term
+\begin{equation}
+  \varphi_J(t) = \varphi_0(t) +
+  \frac{2\pi}{\Phi_0}\,\Phi_{\mathrm{eff}}(t),
+\end{equation}
+where $\varphi_0(t)$ is the phase in the absence of external flux.
+
+\subsection{Classical definition of $\alpha$ and upper bound}
+
+Comparing with the general linear-response form
+\begin{equation}
+  \delta\varphi_J(t) =
+  \left.\frac{\partial\varphi_J}{\partial\Phi_{\mathrm{ext}}}\right|_{0}
+  \delta\Phi_{\mathrm{ext}}(t),
+\end{equation}
+we identify
+\begin{equation}
+  \frac{\partial\varphi_J}{\partial\Phi_{\mathrm{ext}}}
+  = \frac{2\pi}{\Phi_0}\,\eta(d),
+\end{equation}
+and thus
+\begin{equation}
+  \alpha(d) = \frac{\Phi_0}{2\pi}
+  \frac{\partial\varphi_J}{\partial\Phi_{\mathrm{ext}}}
+  = \eta(d).
+\end{equation}
+
+In an ideal SQUID loop with flux $\Phi$ we have
+$\varphi_J=(2\pi/\Phi_0)\Phi$, hence $\alpha_{\mathrm{SQUID}}=1$. Any realistic
+local-coil geometry without a full loop must satisfy $|\eta(d)|<1$, therefore
+\begin{equation}
+  0 < |\alpha(d)| \le 1.
+\end{equation}
+The interval $0<\alpha\le 1$ used in the RF framework is thus naturally
+interpreted as a normalization with respect to the SQUID limit.
+
+For typical thin tunnel junctions without special field focusing one expects
+$\eta\sim 10^{-3}$--$10^{-2}$, giving
+\begin{equation}
+  |\alpha_{\mathrm{static}}|\sim 10^{-3}\text{--}10^{-2}
+\end{equation}
+for the static response, in agreement with the intuition that a single junction
+is almost insensitive to a local coil in the absence of a loop.
+
+\subsection{Oscillator estimate for $\alpha(\omega)$}
+
+To capture dynamical effects, we linearize the RCSJ equation around a static
+operating point and include the coil drive:
+\begin{equation}
+  C\ddot{\varphi} + \frac{1}{R}\dot{\varphi} + \frac{1}{L_J}\varphi
+  = K I_{\mathrm{coil}}(t),
+\end{equation}
+where $L_J$ is the Josephson inductance (around the operating point) and $K$ is
+a coupling coefficient. The plasma frequency and damping rate are
+\begin{equation}
+  \omega_p = \sqrt{\frac{1}{L_J C}},\qquad
+  \gamma = \frac{1}{2RC}.
+\end{equation}
+
+For a harmonic drive $I_{\mathrm{coil}}(t)=I_0 e^{i\omega t}$ the steady-state
+solution gives an effective phase response
+\begin{equation}
+  \alpha_{\mathrm{eff}}(\omega) =
+  \frac{\Phi_0}{2\pi}
+  \frac{\partial\varphi_J(\omega)}{\partial\Phi_{\mathrm{ext}}(\omega)}
+  \propto \frac{1}{\sqrt{(\omega_p^2-\omega^2)^2 + (2\gamma\omega)^2}}.
+\end{equation}
+In the quasistatic limit $\omega\ll\omega_p$ we have
+\begin{equation}
+  \alpha_{\mathrm{static}}\equiv \alpha_{\mathrm{eff}}(0)
+  \propto \frac{1}{\omega_p^2},
+\end{equation}
+while at resonance ($\omega=\omega_p$),
+\begin{equation}
+  \alpha_{\mathrm{res}}\equiv \alpha_{\mathrm{eff}}(\omega_p)
+  \propto \frac{1}{2\gamma\omega_p}.
+\end{equation}
+Eliminating the prefactor yields
+\begin{equation}
+  \alpha_{\mathrm{res}} \approx \alpha_{\mathrm{static}}\,
+  \frac{\omega_p}{2\gamma}
+  = \alpha_{\mathrm{static}} Q,
+\end{equation}
+where $Q=\omega_p/(2\gamma)$ is the quality factor of the mode.
+
+Figure~\ref{fig:alpha-w} shows the corresponding qualitative frequency
+dependence. A standard oscillator derivation of this relation is summarized
+in Appendix~\ref{app:osc}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{1b-5.jpg}
+  \caption{Schematic frequency dependence of
+  $|\alpha_{\mathrm{eff}}(\omega)|$: a small static value in the
+  quasistatic regime and a resonant enhancement near $\omega=\omega_p$ by a
+  factor of order $Q$.}
+  \label{fig:alpha-w}
+\end{figure}
+
+\section{Part III: Mapping Between RF and Classical Frameworks}
+
+The preceding sections show that all objects of the RF framework have explicit
+counterparts in the classical description. Figure~\ref{fig:mapping} summarizes
+this mapping in a compact dictionary.
+
+\begin{figure}[ht]
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{
+    >{\centering\arraybackslash}p{0.42\textwidth}
+    c
+    >{\centering\arraybackslash}p{0.42\textwidth}
+  }
+    \multicolumn{1}{c}{\textbf{Resonant Field framework}} & &
+    \multicolumn{1}{c}{\textbf{Classical description}} \\[6pt]
+    \midrule
+    Phase field $\phi(\mathbf r)$ & $\longleftrightarrow$ &
+    Order-parameter phase $\theta(\mathbf r)$ (GL/Usadel) \\[8pt]
+
+    Phase rotator & $\longleftrightarrow$ &
+    Weak link with large $\partial\varphi_J/\partial\Phi_{\mathrm{ext}}$ \\[8pt]
+
+    Resonant Field Cell & $\longleftrightarrow$ &
+    Localized GL+Maxwell mode (phase, $j_s$, $B$) near the weak link \\[8pt]
+
+    Phase--flux coefficient $\alpha$ & $\longleftrightarrow$ &
+    $\alpha(d,\omega) = \dfrac{\Phi_0}{2\pi}
+      \left.\dfrac{\partial\varphi_J}{\partial\Phi_{\mathrm{ext}}}\right|_{\omega}$ \\[12pt]
+
+    Phase--Control Equation & $\longleftrightarrow$ &
+    Linearized RCSJ with external flux (small-signal phase--flux relation) \\[8pt]
+
+    Strong--rotator regime & $\longleftrightarrow$ &
+    Thick SNS, $d\sim\xi$, with
+    $\alpha_{\mathrm{res}}\simeq\alpha_{\mathrm{static}}Q\sim 0.3$--$0.6$ \\[4pt]
+    \bottomrule
+  \end{tabular}
+
+  \caption{Mapping between the Resonant Field framework and the classical
+  description. Each RF object (phase field, phase rotator, Resonant Field
+  Cell, $\alpha$, the Phase--Control Equation, and the strong-rotator regime)
+  has a direct counterpart in the standard GL/Usadel + London--Maxwell +
+  RCSJ formulation.}
+  \label{fig:mapping}
+\end{figure}
+
+This dictionary allows one to use the compact RF language (phase rotators, RF
+Cells, $\alpha(d)$) while retaining a clear route back to standard microscopic
+theory.
+
+\section{Conclusion}
+
+We have constructed a bridge between the conceptual Resonant Field view of
+superconducting weak links and the standard microscopic description based on
+GL/Usadel equations, London--Maxwell electrodynamics, and the RCSJ model.
+
+\begin{itemize}
+  \item In Part~I we formulated the RF framework: weak links as phase rotators,
+  the notion of a Resonant Field Cell, the Phase--Control Equation, and the key
+  parameter $\alpha$ that measures how efficiently a local microcoil can rotate
+  the Josephson phase.
+  \item In Part~II we showed how the same phenomena arise from classical theory:
+  the dependence of $I_c(d)$ and phase profiles on thickness, the role of
+  localized modes in thick SNS bridges, and the oscillator estimate
+  $\alpha_{\mathrm{res}}\approx \alpha_{\mathrm{static}} Q$ for resonant
+  enhancement of the phase response.
+  \item In Part~III we provided an explicit mapping between RF concepts and
+  classical objects, allowing the RF framework to be used as a compact
+  high-level language while remaining grounded in established physics.
+\end{itemize}
+
+Conceptually, the framework developed here extends the conventional view in
+which a strong magnetic influence on the Josephson phase is typically
+associated with a macroscopic loop (SQUID geometry). Once localized modes in
+thick SNS weak links are taken into account, a single weak link can in
+principle reach phase--flux couplings in the range $|\alpha|\sim 0.3$--$0.6$
+under resonant driving by a local microcoil.
+
+Potential applications of the strong-rotator regime include: (i) local magnetic
+control of Josephson qubits and oscillators without global bias fields,
+(ii) ultra-compact SQUID-like magnetometers where the effective phase--flux
+coupling is provided by a single thick weak link, and (iii) coil-driven
+Josephson oscillators and parametric devices where RF excitation is applied
+locally via microcoils rather than global microwave lines. The parameter
+$\alpha$ provides a natural figure of merit for the design of such devices.
+
+\appendix
+
+\section{Oscillator derivation of the relation
+$\alpha_{\mathrm{res}} \approx \alpha_{\mathrm{static}} Q$}
+\label{app:osc}
+
+In this appendix we collect the standard oscillator derivation of the relation
+$\alpha_{\mathrm{res}} \approx \alpha_{\mathrm{static}} Q$ used in the main text.
+
+Linearizing the RCSJ equation around a static operating point and including a
+small coil current $I_{\mathrm{coil}}(t)$, we obtain
+\begin{equation}
+  C \ddot{\varphi} +
+  \frac{1}{R}\dot{\varphi} +
+  \frac{1}{L_J}\,\varphi
+  = K I_{\mathrm{coil}}(t),
+  \label{eq:appA-osc}
+\end{equation}
+which is a driven damped harmonic oscillator with natural frequency
+\begin{equation}
+  \omega_p = \sqrt{\frac{1}{L_J C}}
+\end{equation}
+and damping rate
+\begin{equation}
+  \gamma = \frac{1}{2RC},
+\end{equation}
+so that the quality factor is
+\begin{equation}
+  Q = \frac{\omega_p}{2\gamma} = \omega_p R C.
+\end{equation}
+
+For a harmonic drive
+\begin{equation}
+  I_{\mathrm{coil}}(t) = I_0 \cos\omega t,
+\end{equation}
+the steady-state response can be written as
+\begin{equation}
+  \varphi(t) = \Re\{\tilde{\varphi}(\omega) e^{i\omega t}\},
+  \qquad
+  \tilde{\varphi}(\omega) =
+  \frac{K I_0}{-C(\omega^2 - \omega_p^2) + i (2\gamma C \omega)}.
+\end{equation}
+The amplitude is therefore
+\begin{equation}
+  |\tilde{\varphi}(\omega)| =
+  \frac{|K| I_0}{\sqrt{(\omega_p^2 - \omega^2)^2 + (2\gamma\omega)^2}}.
+\end{equation}
+
+Identifying $\Phi_{\mathrm{ext}} = M I_{\mathrm{coil}}$ and using the definition
+of $\alpha_{\mathrm{eff}}(\omega)$ via
+\begin{equation}
+  \delta\varphi(\omega) =
+  \alpha_{\mathrm{eff}}(\omega)\,
+  \frac{2\pi}{\Phi_0}\,\Phi_{\mathrm{ext}}(\omega)
+  = \alpha_{\mathrm{eff}}(\omega)\,
+  \frac{2\pi}{\Phi_0}\,M I_0,
+\end{equation}
+we obtain
+\begin{equation}
+  \alpha_{\mathrm{eff}}(\omega) =
+  \frac{|\delta\varphi(\omega)|}{(2\pi/\Phi_0) M I_0}
+  = \frac{|K|\Phi_0}{2\pi M}
+  \frac{1}{\sqrt{(\omega_p^2 - \omega^2)^2 + (2\gamma\omega)^2}}.
+\end{equation}
+
+In the quasistatic limit $\omega \ll \omega_p$ we have
+\begin{equation}
+  \alpha_{\mathrm{static}} \equiv \alpha_{\mathrm{eff}}(0) \approx
+  \frac{|K|\Phi_0}{2\pi M}\,
+  \frac{1}{\omega_p^2},
+\end{equation}
+while at resonance ($\omega = \omega_p$),
+\begin{equation}
+  \alpha_{\mathrm{res}} \equiv \alpha_{\mathrm{eff}}(\omega_p) =
+  \frac{|K|\Phi_0}{2\pi M}\,
+  \frac{1}{2\gamma\omega_p}.
+\end{equation}
+Eliminating the prefactor via $\alpha_{\mathrm{static}}$ yields
+\begin{equation}
+  \alpha_{\mathrm{res}} \approx
+  \alpha_{\mathrm{static}}\,
+  \frac{\omega_p}{2\gamma}
+  = \alpha_{\mathrm{static}} Q,
+\end{equation}
+which is the relation used in Sec.~3.7 and in the RF framework discussion.
+
+\section{Order-of-magnitude estimate for a thick SNS bridge with microcoil}
+
+The oscillator relation
+$\alpha_{\mathrm{res}} \approx \alpha_{\mathrm{static}} Q$
+shows that a modest static coupling $\alpha_{\mathrm{static}}$ can be amplified
+into a strong-rotator regime at resonance, provided the mode has a reasonable
+quality factor $Q$. Here we collect a simple numerical estimate for a thick SNS
+bridge addressed by an on-chip microcoil.
+
+Consider a diffusive SNS weak link with
+\begin{itemize}
+  \item normal-layer thickness $d \sim 10~\mathrm{nm}$,
+  \item width $w \sim 300~\mathrm{nm}$,
+  \item coherence length $\xi$ such that $d\sim\xi$ (thick SNS regime),
+  \item London penetration depth in the electrodes
+        $\lambda_L \sim 250~\mathrm{nm}$.
+\end{itemize}
+For such dimensions the effective kinetic inductance of the weak-link region
+can be of order
+\begin{equation}
+  L_{\mathrm{kin}} \sim 20\text{--}30~\mathrm{pH},
+\end{equation}
+while realistic planar microcoils placed above the bridge can reach mutual
+inductances in the range
+\begin{equation}
+  M \sim 0.8\text{--}1.8~\mathrm{pH}.
+\end{equation}
+
+In a simple lumped picture the static phase--flux coupling can be estimated as
+\begin{equation}
+  \alpha_{\mathrm{static}}
+  \sim \frac{M}{L_{\mathrm{kin}}}
+  \sim 0.03\text{--}0.07,
+\end{equation}
+which already lies two--three orders of magnitude above the tunnel-junction
+values $|\alpha_{\mathrm{static}}|\sim 10^{-3}$--$10^{-2}$ quoted in the main
+text for typical SIS geometries.
+
+For localized plasma-like modes in the $5$--$20~\mathrm{GHz}$ range, quality
+factors of order
+\begin{equation}
+  Q \sim 15\text{--}35
+\end{equation}
+are not unreasonable for carefully engineered on-chip structures. Combining the
+two estimates, we obtain a resonant phase--flux coupling
+\begin{equation}
+  |\alpha_{\mathrm{res}}|
+  \sim |\alpha_{\mathrm{static}}|\,Q
+  \sim 0.3\text{--}0.6,
+\end{equation}
+which falls squarely into the target strong-rotator window of the RF
+framework.
+
+This back-of-the-envelope estimate does not replace full GL/Usadel +
+London--Maxwell simulations, but it shows that thick SNS bridges with realistic
+microcoils can, in principle, reach the strong-rotator regime without
+requiring extreme values of $M$, $L_{\mathrm{kin}}$, or $Q$. It also motivates
+the experimental programme described in Ref.~\cite{Experiment}, where
+coil-driven Shapiro steps in such devices are proposed as a direct operational
+probe of $\alpha(d,\omega)$.
+
+\section*{Acknowledgements}
+
+The author thanks colleagues and collaborators for discussions on SNS weak
+links, localized modes and resonant control of Josephson phase.
+
+\begin{thebibliography}{9}
+
+\bibitem{PartI}
+A.~Turchanov,
+\newblock \emph{Resonant Field Symmetry in Superconductors: A Standing-Wave
+Picture of Meissner Screening and Josephson Barriers},
+Phase Geometry Series --- Part I, preprint (2025).
+
+\bibitem{PartII}
+A.~Turchanov,
+\newblock \emph{Phase-Coherent Josephson Devices as Clocks in Weak Gravitational
+Fields},
+Phase Geometry Series --- Part II, preprint (2025).
+
+\bibitem{PartIII}
+A.~Turchanov,
+\newblock \emph{Phase-Field Newtonian Gravity and Phase Clocks},
+Phase Geometry Series --- Part III, Zenodo (2025).
+
+\bibitem{Experiment}
+A.~Turchanov,
+\newblock \emph{Magnetic Phase Control of a Thick SNS Weak Link},
+experimental proposal / preprint (2025).
+
+\end{thebibliography}
+
+\end{document}

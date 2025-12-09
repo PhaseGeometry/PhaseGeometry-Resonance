@@ -1,0 +1,311 @@
+\documentclass[11pt,a4paper]{article}
+\pdfoutput=1
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\title{PhaseGeometry-Resonance Phase-Device Zoo:\\[4pt]
+Towards a Unified Phase Description of Quantum and Semiclassical Devices}
+
+\author{Aleksey Turchanov}
+
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Zenodo DOI: 10.5281/zenodo.17807163
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+In standard device physics, tunnelling, interference, negative differential
+resistance and charge quantisation are usually treated within a collection of
+separate models: Esaki diodes, resonant-tunnelling diodes, Gunn and IMPATT
+oscillators, Josephson junctions, SQUIDs, Aharonov--Bohm rings, quantum point
+contacts, single-electron transistors, quantum cascade lasers, and many
+variants. Within the PhaseGeometry programme it is natural to repackage these
+elements as members of a single ``phase-device zoo'', each realising a
+particular way in which a phase field controls transport. This short note
+provides a compact taxonomy of such devices and sketches a unifying phase
+description that can be linked both to the Z$_2$ phase medium and to the 5D
+phase-fibre picture.
+\end{abstract}
+
+\section{Motivation}
+
+The PhaseGeometry framework is built around the idea that many apparently
+different physical systems can be understood as realisations of the same
+underlying phase structures. In the Z$_2$ programme the emphasis is on a
+binary phase medium and its rôle in cosmology and quantum foundations; in the
+5D phase-fibre programme, phase is promoted to a genuine geometric coordinate
+$\phi$ attached to each spacetime point. In both cases, phase is not a mere
+auxiliary label but a dynamical object which can store, transport and process
+information.
+
+From this point of view, a wide variety of condensed-matter and mesoscopic
+devices can be treated as \emph{phase devices}: physical systems whose
+functionality is governed by the behaviour of some phase field (or an
+effective phase variable) and its coupling to currents, charges, and external
+fields. The purpose of this note is twofold:
+\begin{itemize}
+  \item to collect a minimal ``phase-device zoo''---a list of representative
+  devices which already play, or can naturally play, a rôle in PhaseGeometry;
+  \item to outline simple unifying principles which allow one to describe
+  these systems within a single phase-based language, without replacing
+  standard microscopic models.
+\end{itemize}
+
+\section{Phase-device zoo}
+\label{sec:zoo}
+
+Instead of a wide table, we list representative devices as a structured
+taxonomy. For each entry we indicate (i) the physical regime, (ii) the
+dominant mechanism, (iii) the natural phase object, (iv) the presence or
+absence of negative differential resistance (NDR), and (v) the suggested rôle
+within the PhaseGeometry programme.
+
+\setlist[description]{leftmargin=2.5em,labelindent=0em,font=\normalfont\bfseries}
+
+\begin{description}
+
+  \item[Esaki (tunnel) diode.]
+  \emph{Regime:} semiconductor, heavily doped $p$--$n$ junction with a very
+  thin depletion region. \emph{Mechanism:} direct tunnelling through the
+  depletion barrier; overlap of filled and empty states on the two sides.
+  \emph{Phase object:} Bloch-wave phase across the junction; can be treated as
+  an effective normal-state phase rotator with coupling
+  $\alpha_N(d,V)$. \emph{NDR:} yes (pronounced peak and valley in I--V).
+  \emph{PhaseGeometry rôle:} normal-state prototype of a phase rotator;
+  simplest NDR device to rephrase in the PhaseGeometry language.
+
+  \item[Resonant tunnelling diode (RTD).]
+  \emph{Regime:} semiconductor heterostructure with a double barrier and a
+  quantum well. \emph{Mechanism:} resonant tunnelling via discrete levels in
+  the well; current peaks when incoming energy matches a bound level.
+  \emph{Phase object:} phase of standing waves in the well; resonant phase
+  condition across a multi-barrier stack. \emph{NDR:} yes.
+  \emph{PhaseGeometry rôle:} clean example of a \emph{resonant} phase rotator;
+  normal-state analogue of Andreev / Josephson bound levels.
+
+  \item[Gunn diode.]
+  \emph{Regime:} bulk or heterostructure semiconductor with multi-valley
+  conduction band. \emph{Mechanism:} intervalley transfer and formation of
+  travelling high-field domains in the bulk. \emph{Phase object:} collective
+  phase of a propagating space--charge / field domain. \emph{NDR:} yes
+  (effective NDR and microwave generation). \emph{PhaseGeometry rôle:} example
+  of NDR without tunnelling; macroscopic phase of a travelling pattern in the
+  drift medium.
+
+  \item[IMPATT / TRAPATT / BARITT diodes.]
+  \emph{Regime:} semiconductor junctions and heterostructures operated at high
+  fields and microwave frequencies. \emph{Mechanism:} impact ionisation plus
+  finite transit time; phase delay between RF field and current.
+  \emph{Phase object:} phase of the AC current relative to the RF field; a
+  transit-time phase shift. \emph{NDR:} yes at RF/microwave frequencies.
+  \emph{PhaseGeometry rôle:} high-frequency phase devices where negative
+  resistance arises from controlled phase lags.
+
+  \item[Josephson junction (SIS / SNS / Dayem bridge).]
+  \emph{Regime:} superconductor--insulator--superconductor or
+  superconductor--normal--superconductor weak link. \emph{Mechanism:}
+  Cooper-pair tunnelling and proximity effect in the weak region.
+  \emph{Phase object:} order-parameter phase difference $\Delta\phi$ across
+  the weak link. \emph{NDR:} no in DC I--V (but strongly nonlinear and
+  hysteretic in some regimes). \emph{PhaseGeometry rôle:} canonical
+  superconducting phase rotator; base model for PhaseGeometry SNS/SIS devices
+  and resonant field cells.
+
+  \item[dc / rf SQUID.]
+  \emph{Regime:} superconducting loop with one or two Josephson junctions.
+  \emph{Mechanism:} flux--phase conversion and interference of Josephson
+  currents around the loop. \emph{Phase object:} loop phase / enclosed flux;
+  $\phi$ controlled by magnetic flux $\Phi$ through the loop.
+  \emph{NDR:} no (used primarily as a sensitive sensor). \emph{PhaseGeometry
+  rôle:} interferometric phase meter for the superconducting order parameter;
+  bridge between local and global phase control.
+
+  \item[Aharonov--Bohm ring.]
+  \emph{Regime:} mesoscopic normal metal or 2DEG ring with coherent transport.
+  \emph{Mechanism:} quantum interference of two paths enclosing magnetic flux.
+  \emph{Phase object:} relative phase between paths; Aharonov--Bohm phase
+  proportional to enclosed flux $\Phi$. \emph{NDR:} no (oscillatory
+  conductance as a function of flux). \emph{PhaseGeometry rôle:} minimal
+  normal-state interferometer; pure example of phase-controlled conductance
+  without superconductivity.
+
+  \item[Quantum point contact (QPC).]
+  \emph{Regime:} narrow constriction in a 2DEG or nanowire supporting a small
+  number of 1D modes. \emph{Mechanism:} mode quantisation and coherent
+  transmission in 1D channels; conductance quantisation in steps of
+  $2e^2/h$. \emph{Phase object:} scattering phase of each transport mode; phase
+  of transmission amplitudes. \emph{NDR:} no (step-like conductance).
+  \emph{PhaseGeometry rôle:} prototype of phase-dependent, quantised
+  conductance; natural entry point for PhaseGeometry in mesoscopic transport.
+
+  \item[Single-electron transistor (SET).]
+  \emph{Regime:} small normal or superconducting island connected by tunnel
+  barriers. \emph{Mechanism:} Coulomb blockade and charge quantisation;
+  sequential tunnelling events. \emph{Phase object:} phase of charge states on
+  the island (dual to superconducting phase); an effective phase in the charge
+  basis. \emph{NDR:} not in simple DC I--V (Coulomb staircase rather than
+  N-shaped characteristics). \emph{PhaseGeometry rôle:} charge--phase dual to
+  Josephson devices; connects PhaseGeometry to discrete charge transport and
+  island devices.
+
+  \item[Quantum cascade laser (QCL).]
+  \emph{Regime:} semiconductor superlattice with multiple wells and barriers.
+  \emph{Mechanism:} cascaded resonant tunnelling and optical transitions along
+  a ladder of engineered subbands. \emph{Phase object:} phase of envelope
+  states across the superlattice; phase matching between tunnelling and
+  optical emission. \emph{NDR:} no (functions as a gain medium).
+  \emph{PhaseGeometry rôle:} multistage phase-engineered tunnelling structure;
+  example of extended phase engineering in the energy domain.
+
+\end{description}
+
+\section{Unifying principles for phase devices}
+\label{sec:unification}
+
+The list above deliberately mixes conventional semiconductor devices,
+superconducting elements and mesoscopic interferometers. The unifying idea is
+that each of them can be associated with an effective phase variable and a
+set of coupling coefficients which quantify how this phase responds to
+external drives and how it feeds back into observable currents and voltages.
+
+\subsection{Effective phase fields and phase rotators}
+
+The first step is to identify, for each microscopic setting, a natural phase
+object:
+\begin{itemize}
+  \item in normal and semiconductor structures (Esaki, RTD, QPC, QCL), the
+  phase of Bloch or envelope states provides a coarse-grained phase
+  $\phi_\mathrm{B}(x)$ across the active region;
+  \item in superconducting devices (Josephson junctions, SQUIDs), the
+  order-parameter phase $\phi_\mathrm{SC}(x)$ is already explicit and directly
+  controls supercurrents;
+  \item in systems with travelling domains or delayed currents (Gunn, IMPATT),
+  one can define a collective phase $\phi_\mathrm{dom}(x,t)$ of the propagating
+  pattern;
+  \item in charge-quantised systems (SET), a conjugate relation between
+  discrete charge and a phase-like variable $\phi_Q$ naturally appears.
+\end{itemize}
+
+Once such a phase variable is identified, the device can be treated as a
+\emph{phase rotator}: a local region in which the phase changes by some amount
+$\Delta\phi$ in response to external stimuli (bias voltage, magnetic flux,
+microwave drive, injected current). The microscopic details enter through
+effective coupling coefficients, schematically
+\begin{equation}
+  \Delta\phi \;=\; \alpha(d,V,\omega,B,\ldots)\,\times\,\text{(drive)} \,,
+\end{equation}
+with $d$ the characteristic thickness or length of the active region and
+$(V,\omega,B,\ldots)$ denoting the applied voltage, frequency, magnetic field
+and other control parameters. In superconducting SNS/SIS links this is the
+$\alpha(d,\omega)$ already used in PhaseGeometry; for Esaki and RTD devices
+one can introduce a normal-state analogue $\alpha_N(d,V,\omega)$ calibrated
+to standard tunnelling models.
+
+\subsection{Negative differential resistance as phase restructuring}
+
+In devices with NDR (Esaki, RTD, Gunn, IMPATT), the same formal phase
+description can be used to reinterpret the origin of the non-monotonic
+current--voltage characteristic:
+\begin{itemize}
+  \item in tunnelling devices (Esaki, RTD), the overlap of filled and empty
+  states selects an effective set of phases which contribute to transport; as
+  $V$ is increased, the accessible phase channels reorganise, producing a
+  peak and subsequent drop in current;
+  \item in Gunn and IMPATT structures, the phase of domain motion or the
+  phase lag between field and current crosses special values, leading to an
+  effective negative resistance at certain frequencies.
+\end{itemize}
+In all these cases, NDR can be seen as a \emph{restructuring of phase flow}
+through the device: a change in the pattern by which phase modes carry
+current, rather than a purely local change of resistance.
+
+\subsection{Interferometric phase meters}
+
+Aharonov--Bohm rings, SQUIDs and related interferometers play a special rôle
+as \emph{phase meters}. They do not primarily act as phase rotators, but as
+devices that convert accumulated phase differences into measurable changes in
+conductance or critical current. In the PhaseGeometry picture, such elements
+link local phase dynamics to global constraints (e.g.\ flux quantisation in a
+loop) and provide natural interfaces between abstract phase fields and
+laboratory observables.
+
+
+
+\section{Directions for further development}
+
+The phase-device zoo suggests several concrete directions for the
+PhaseGeometry programme:
+\begin{enumerate}
+  \item \textbf{Normal-state phase rotators.} Develop an explicit mapping
+  between standard tunnelling models (Tsu--Esaki, NEGF) and effective
+  normal-state phase rotators with coefficients $\alpha_N(d,V,\omega)$ for
+  Esaki and resonant-tunnelling diodes.
+  \item \textbf{Unified SNS / Esaki / RTD language.} Formulate a common
+  phase-based description in which superconducting SNS/SIS junctions and
+  normal tunnelling devices appear as limiting cases of a single
+  phase-rotator template, differing only by the type of phase field and
+  microscopic calibration of $\alpha$.
+  \item \textbf{Phase-engineered NDR.} Use the phase-flow viewpoint to design
+  new NDR structures where the current peak and valley are controlled by
+  engineered phase spectra (multi-barrier stacks, superlattices, hybrid
+  SC/normal configurations).
+  \item \textbf{Charge--phase dual networks.} Extend the PhaseGeometry
+  treatment to networks combining Josephson junctions, SETs and related
+  devices, exploiting the duality between phase and charge to construct
+  programmable phase media at the circuit level.
+  \item \textbf{Bridging to Z$_2$ and 5D frameworks.} Interpret the effective
+  device phases as coarse-grained manifestations of either (i) binary phase
+  domains in the Z$_2$ medium, or (ii) trajectories in the 5D phase fibre
+  $(x^\mu,\phi)$. This provides a route to embed concrete mesoscopic devices
+  into the broader cosmological and foundational context of PhaseGeometry.
+\end{enumerate}
+
+\section{Status and future work}
+
+The present note is intentionally conceptual and taxonomic. It collects
+standard devices into a common phase language but does not re-derive their
+transport properties from scratch within the Resonance formalism. In
+particular, normal-state tunnelling devices (Esaki, RTD) and mesoscopic
+interferometers (Aharonov--Bohm rings, QPCs) are treated at the level of
+their dominant mechanisms and natural phase variables, with microscopic
+details delegated to the standard condensed-matter literature.
+
+Future work will include semi-technical mappings for selected devices, such
+as Esaki and resonant-tunnelling diodes and Aharonov--Bohm rings, where
+effective phase variables and normal-state coupling coefficients
+$\alpha_N(d,V,\omega)$ are derived directly from tunnelling and interference
+models. These worked examples will strengthen the link between the
+PhaseGeometry Resonance language and existing NEGF, Usadel and related
+approaches, and may be collected in a follow-up note.
+
+\section{Summary}
+
+This note does not attempt to replace any microscopic device model; rather, it
+collects a set of standard quantum and semiclassical devices and repackages
+them into a unified phase-based taxonomy. The key claim is modest but
+structural: once an effective phase field is identified, a wide variety of
+devices can be treated as phase rotators, phase meters, or phase-engineered
+media. This provides a common language linking superconducting SNS/SIS
+junctions, normal tunnelling devices, interferometers and charge-quantised
+elements, and prepares the ground for embedding concrete device physics into
+the Z$_2$ and 5D branches of the PhaseGeometry programme.
+
+\end{document}
